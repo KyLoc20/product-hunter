@@ -2,7 +2,7 @@ import * as React from "react";
 import styled from "@emotion/styled";
 import PropTypes from "prop-types";
 import Icon from "../../ui/Icon/Icon";
-import Button from "../../ui/Button/Button";
+import Button from "../../ui/Button/Button"
 import SearchInput from "./SearchInput";
 const BasicAppBar = styled("section")`
   position: fixed;

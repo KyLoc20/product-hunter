@@ -1,5 +1,5 @@
 import HomePage from "./home/index";
-import { getRecommendData } from "./home/data";
+import { getRecommendData } from "../data/recommend.js";
 // This function gets called at build time
 export async function getStaticProps() {
   // Call an external API endpoint to get posts

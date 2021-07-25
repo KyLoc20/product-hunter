@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import * as React from "react";
 import AppBar from "../../src/components/AppBar";
 import Recommend from "../../src/components/home/Recommend";
-import { getRecommendData } from "./data";
+import { getRecommendData } from "../../data/recommend.js";
 const Container = styled("section")`
   display: flex;
   flex-direction: column;
@@ -37,7 +37,7 @@ const RightContainer = styled("aside")`
 
 function HomePage(props) {
   const { version, recommendItems } = props;
-  console.log("HomePage",recommendItems)
+  console.log("HomePage", recommendItems);
   return (
     <Container>
       <Head>
