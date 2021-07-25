@@ -18,6 +18,7 @@ const Component = styled(BasicAppBar)`
   position: sticky;
   top: -12px;
   padding-bottom: 20px;
+  padding-right: 20px;
   height: 80px;
   background: #fff;
   box-shadow: 0 0 1px 1px rgba(33, 41, 63, 0.1);
@@ -72,11 +73,27 @@ function SignInButton(props) {
     </SignIn>
   );
 }
-const SignUp = styled(BasicWrapper)``;
+const SignUp = styled(BasicWrapper)`
+  button .text {
+    font-weight: 600;
+    color: #fff;
+    font-size: 14px;
+    line-height: 24px;
+  }
+`;
+// "#f64900"
 function SignUpButton(props) {
   return (
     <SignUp>
-      <Button>Sign Up</Button>
+      <Button
+        height={40}
+        padding={"8px 16px"}
+        depressed
+        backgroundColor={"linear-gradient(227deg, #f64900, #f64900)"}
+        hoverBackgroundColor={"linear-gradient(227deg,#ff4582,#e12e0d)"}
+      >
+        <span className="text">Sign Up</span>
+      </Button>
     </SignUp>
   );
 }

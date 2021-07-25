@@ -23,8 +23,6 @@ const ButtonComponent = styled(ButtonDefaultRemoval)`
   position: relative;
   align-items: center;
   justify-content: center;
-  height: 36px;
-  padding: 0 16px;
   color: rgba(0, 0, 0, 0.6);
   font-size: 0.875rem;
   font-weight: 500;
@@ -89,8 +87,9 @@ export default function Button(props) {
     const sizeStyles = getSize(props.size);
     if (props.height) sizeStyles["height"] = `${props.height}px`;
     if (props.width) sizeStyles["width"] = `${props.width}px`;
+    if (props.padding) sizeStyles["padding"] = `${props.padding}`;
     return sizeStyles;
-  }, [props.size, props.height, props.width]);
+  }, [props.size, props.height, props.width, props.padding]);
   const computedBorder = React.useMemo(() => {
     //only for outlined
     if (props.variant === "outlined")
@@ -122,6 +121,7 @@ export default function Button(props) {
   }, [props.tile, props.rounded, props.height, props.size]);
   const computedBackgroundColor = React.useMemo(() => {
     if (props.disabled) return getColor("disabled", props.variant, "main");
+    //todo linear-gradient transition not supported
     if (isHovering)
       return (
         props.hoverBackgroundColor ||
@@ -150,7 +150,7 @@ export default function Button(props) {
     return props.loading ? 0 : 1;
   }, [props.loading]);
   const handleClick = (e) => {
-    if (props.disabled || props.loading) return;
+    if (props.disabled || props.loading || props.rippleDisabled) return;
     createRippleByAddingLayer(e, false, computedRippleColor);
     props.onClick?.(e);
   };
@@ -194,9 +194,14 @@ Button.propTypes = {
   depressed: PropTypes.bool, //no box-shadow if true
   tile: PropTypes.bool, //no border-radius if true
   rounded: PropTypes.bool, //round edges if true
+  rippleDisabled: PropTypes.bool,
+  onClick: PropTypes.func,
+  //custom
   width: PropTypes.number,
   height: PropTypes.number,
-  onClick: PropTypes.func,
+  padding: PropTypes.string,
+  backgroundColor: PropTypes.string,
+  hoverBackgroundColor: PropTypes.string,
 };
 Button.defaultProps = {
   variant: "plain",
@@ -206,4 +211,5 @@ Button.defaultProps = {
   depressed: false,
   tile: false,
   rounded: false,
+  rippleDisabled: false,
 };
