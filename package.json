@@ -1,20 +1,26 @@
 {
-  "name": "product-hunter",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "next": "11.0.1",
-    "react": "17.0.2",
-    "react-dom": "17.0.2"
-  },
-  "devDependencies": {
-    "eslint": "7.31.0",
-    "eslint-config-next": "11.0.1"
-  }
+    "name": "product-hunter",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev -p 4000",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint"
+    },
+    "dependencies": {
+        "@emotion/react": "11.1.1",
+        "@emotion/styled": "11.0.0",
+        "clsx": "^1.1.1",
+        "next": "^10.0.0",
+        "react": "17.0.1",
+        "react-dom": "17.0.1",
+        "react-transition-group": "^4.4.1",
+        "react-uuid": "^1.0.2"
+    },
+    "devDependencies": {
+        "@emotion/babel-plugin": "11.0.0",
+        "eslint": "7.31.0",
+        "eslint-config-next": "11.0.1"
+    }
 }

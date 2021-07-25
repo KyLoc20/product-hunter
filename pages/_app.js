@@ -1,7 +1,7 @@
-import '../styles/globals.css'
+import "../styles/global.css"
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+export default function App({ Component, pageProps }) {
+    pageProps.version = "v0.0.1"
+    return <Component {...pageProps }
+    />
 }
-
-export default MyApp
