@@ -8,9 +8,11 @@ const Component = styled.section`
   position: relative;
   width: 720px;
   flex-shrink: 0;
+  margin-bottom: 30px;
 `;
 const Header = styled.div`
   display: flex;
+  position: relative;
   align-items: center;
   height: 32px;
   width: 100%;
@@ -21,7 +23,7 @@ const Header = styled.div`
 const ContentContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  align-content:start;
+  align-content: start;
   box-sizing: border-box;
   width: 100%;
   padding: 0 20px;
@@ -40,6 +42,7 @@ const ItemComponent = styled.div`
   img {
     width: 50px;
     height: 50px;
+    cursor: pointer;
   }
   .content {
     width: 267px;
@@ -52,15 +55,21 @@ const ItemComponent = styled.div`
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+
       cursor: pointer;
       color: rgb(0, 0, 0);
       line-height: 24px;
     }
     .description {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+
       font-size: 13px;
       color: rgb(111, 111, 111);
       line-height: 16px;
       cursor: pointer;
+      text-transform: full-width;
     }
   }
 `;
@@ -80,6 +89,7 @@ Item.propTypes = {
   name: PropTypes.string,
   description: PropTypes.string,
   coverUrl: PropTypes.string,
+  likes: PropTypes.number,
 };
 Item.defaultProps = {
   right: false,
@@ -92,10 +102,12 @@ export default function Recommend(props) {
         <ContentContainer>
           {props.items.map((value, index) => (
             <Item
+              key={value.name}
               right={index % 2 === 1}
               name={value.name}
               description={value.description}
               coverUrl={value.cover}
+              likes={value.likes}
             ></Item>
           ))}
         </ContentContainer>

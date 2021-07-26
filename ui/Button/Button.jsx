@@ -98,18 +98,20 @@ export default function Button(props) {
       else
         return `1px solid ${
           isHovering
-            ? props.hoverBorder ||
+            ? props.hoverBorderColor ||
+              props.borderColor ||
               getColor(props.color, props.variant, "borderFocused")
-            : props.border || getColor(props.color, props.variant, "border")
+            : props.borderColor ||
+              getColor(props.color, props.variant, "border")
         }`;
     else return null;
   }, [
     isHovering,
     props.variant,
     props.disabled,
-    props.hoverBorder,
+    props.hoverBorderColor,
     props.color,
-    props.border,
+    props.borderColor,
   ]);
   const computedBorderRadius = React.useMemo(() => {
     if (props.tile) return null;
@@ -202,6 +204,8 @@ Button.propTypes = {
   padding: PropTypes.string,
   backgroundColor: PropTypes.string,
   hoverBackgroundColor: PropTypes.string,
+  borderColor: PropTypes.string,
+  hoverBorderColor: PropTypes.string,
 };
 Button.defaultProps = {
   variant: "plain",

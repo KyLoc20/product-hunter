@@ -4,7 +4,9 @@ import PropTypes from "prop-types";
 import * as React from "react";
 import AppBar from "../../src/components/AppBar";
 import Recommend from "../../src/components/home/Recommend";
+import PostList from "../../src/components/home/PostList";
 import { getRecommendData } from "../../data/recommend.js";
+import { getPostData } from "../../data/post.js";
 const Container = styled("section")`
   display: flex;
   flex-direction: column;
@@ -36,8 +38,8 @@ const RightContainer = styled("aside")`
 `;
 
 function HomePage(props) {
-  const { version, recommendItems } = props;
-  console.log("HomePage", recommendItems);
+  const { version, recommendItems, todayPostItems } = props;
+  console.log("HomePage", recommendItems,todayPostItems);
   return (
     <Container>
       <Head>
@@ -48,6 +50,7 @@ function HomePage(props) {
       <ContentContainer>
         <LeftContainer>
           <Recommend items={recommendItems}></Recommend>
+          <PostList title={"Today"} items={todayPostItems}></PostList>
         </LeftContainer>
         <RightContainer></RightContainer>
       </ContentContainer>
@@ -58,10 +61,11 @@ function HomePage(props) {
 export async function getStaticProps() {
   // Call an external API endpoint to get posts
   const recommendItems = getRecommendData();
+  const todayPostItems = getPostData();
   // By returning { props: { posts } }, the Blog component
   // will receive `posts` as a prop at build time
   return {
-    props: { recommendItems },
+    props: { recommendItems, todayPostItems },
   };
 }
 export default HomePage;

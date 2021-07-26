@@ -21,7 +21,6 @@ const RecommendData = [{
 }, ]
 
 function getRecommendData() {
-    console.log("getRecommendData", RecommendData)
     return RecommendData
 }
 export {
