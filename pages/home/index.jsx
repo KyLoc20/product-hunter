@@ -2,12 +2,14 @@ import Head from "next/head";
 import styled from "@emotion/styled";
 import PropTypes from "prop-types";
 import * as React from "react";
+import { getData } from "../../api/base";
 import AppBar from "../../src/components/AppBar";
 import Recommend from "../../src/components/home/Recommend";
 import PostList from "../../src/components/home/PostList";
 import LatestStory from "../../src/components/home/LatestStory";
 import Upcoming from "../../src/components/home/Upcoming";
-import { getData } from "../../api/base";
+import Hiring from "../../src/components/home/Hiring";
+
 const Container = styled("section")`
   display: flex;
   flex-direction: column;
@@ -43,6 +45,7 @@ function HomePage(props) {
     todayPostItems,
     latestStoryItems,
     upcomingItems,
+    hiringItems,
   } = props;
   console.log("HomePage", recommendItems, todayPostItems, latestStoryItems);
   return (
@@ -60,6 +63,7 @@ function HomePage(props) {
         <RightContainer>
           <LatestStory items={latestStoryItems}></LatestStory>
           <Upcoming items={upcomingItems}></Upcoming>
+          <Hiring items={hiringItems}></Hiring>
         </RightContainer>
       </ContentContainer>
     </Container>
@@ -72,11 +76,17 @@ export async function getStaticProps() {
   const todayPostItems = getData("post");
   const latestStoryItems = getData("story");
   const upcomingItems = getData("upcoming");
-
+  const hiringItems = getData("hiring");
   // By returning { props: { posts } }, the Blog component
   // will receive `posts` as a prop at build time
   return {
-    props: { recommendItems, todayPostItems, latestStoryItems, upcomingItems },
+    props: {
+      recommendItems,
+      todayPostItems,
+      latestStoryItems,
+      upcomingItems,
+      hiringItems,
+    },
   };
 }
 export default HomePage;

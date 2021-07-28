@@ -7,11 +7,17 @@ export async function getStaticProps() {
   const todayPostItems = getData("post");
   const latestStoryItems = getData("story");
   const upcomingItems = getData("upcoming");
-
+  const hiringItems = getData("hiring");
   // By returning { props: { posts } }, the Blog component
   // will receive `posts` as a prop at build time
   return {
-    props: { recommendItems, todayPostItems, latestStoryItems,upcomingItems },
+    props: {
+      recommendItems,
+      todayPostItems,
+      latestStoryItems,
+      upcomingItems,
+      hiringItems,
+    },
   };
 }
 export default HomePage;

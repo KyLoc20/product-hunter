@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import PropTypes from "prop-types";
 import * as React from "react";
 import Paper from "../Paper";
-import Item from "./StoryItem";
+import Item from "./LatestStoryItem";
 const Component = styled.section`
   display: flex;
   flex-direction: column;

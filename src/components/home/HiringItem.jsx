@@ -7,21 +7,15 @@ const Component = styled.div`
   display: flex;
   margin-bottom: 20px;
   cursor: pointer;
-  &:not(.first) {
-    padding-top: 20px;
-    border-top: 1px solid #e8e8e8;
+  &:hover .arrow {
+    visibility: visible;
   }
-`;
-const Image = styled.img`
-  width: 40px;
-  height: 40px;
-  margin-left: 10px;
 `;
 const ItemContent = styled.div`
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  width: 240px;
+  width: 290px;
 `;
 const AutoWrapText = styled.p`
   margin: 0;
@@ -35,6 +29,12 @@ const ItemName = styled(AutoWrapText)`
   font-weight: 600;
   line-height: 20px;
   cursor: pointer;
+  .arrow {
+    visibility: hidden;
+    margin-left: 3px;
+    font-size: 11px;
+    color: rgb(204, 77, 41);
+  }
 `;
 const ItemDescription = styled(AutoWrapText)`
   font-size: 13px;
@@ -43,42 +43,30 @@ const ItemDescription = styled(AutoWrapText)`
   text-transform: full-width;
   color: rgb(111, 111, 111);
 `;
-const FollowButtonWrapper = styled.div`
-  display: flex;
-  align-items: start;
-  font-size: 11px;
-  line-height: 16px;
-  margin-top: 10px;
-  font-weight: 600;
+const ItemLocation = styled(AutoWrapText)`
+  font-size: 13px;
+  line-height: 20px;
+  margin-top: 5px;
+  text-transform: full-width;
   color: rgb(111, 111, 111);
-  .icon {
-    margin-right: 5px;
-  }
-  &:hover {
-    color: rgb(204, 77, 41);
-  }
 `;
 export default function Item(props) {
   return (
-    <Component className={clsx(props.first && "first")}>
+    <Component>
       <ItemContent>
-        <ItemName>{props.name}</ItemName>
+        <ItemName>
+          {props.name}
+          <span className="arrow">→</span>
+        </ItemName>
         <ItemDescription>{props.description}</ItemDescription>
-        <FollowButtonWrapper>
-          <Icon name="plus" size={8}></Icon> FOLLOW({props.follows})
-        </FollowButtonWrapper>
+        <ItemLocation>{props.location}</ItemLocation>
       </ItemContent>
-      <Image src={props.coverUrl} alt={props.name} />
     </Component>
   );
 }
 Item.propTypes = {
   name: PropTypes.string,
   description: PropTypes.string,
-  coverUrl: PropTypes.string,
-  follows: PropTypes.number,
-  first: PropTypes.bool,
+  location: PropTypes.string,
 };
-Item.defaultProps = {
-  first: false,
-};
+Item.defaultProps = {};

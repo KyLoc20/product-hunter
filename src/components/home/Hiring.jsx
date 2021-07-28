@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import PropTypes from "prop-types";
 import * as React from "react";
 import Paper from "../Paper";
-import Item from "./UpcomingItem";
+import Item from "./HiringItem";
 import Button from "../../../ui/Button/Button";
 const Component = styled.section`
   display: flex;
@@ -20,13 +20,6 @@ const Header = styled.div`
   margin-bottom: 10px;
   font-size: 16px;
   font-weight: 500;
-  .power {
-    margin-left: 4px;
-    line-height: 20px;
-    font-size: 13px;
-    font-weight: 400;
-    color: rgb(111, 111, 111);
-  }
 `;
 const ContentContainer = styled.div`
   display: flex;
@@ -53,22 +46,34 @@ const ButtonContent = styled.span`
   font-weight: 600;
   letter-spacing: normal;
 `;
-export default function Upcoming(props) {
+const PostJob = styled.div`
+  display: flex;
+  margin-top: 20px;
+  color: rgb(111, 111, 111);
+  font-size: 13px;
+  line-height: 17px;
+  font-weight: 600;
+  .post {
+    cursor: pointer;
+    margin-left: 2px;
+    color: #cc4d29;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+`;
+export default function Hiring(props) {
   return (
     <Component>
-      <Header>
-        Upcoming Products <span className="power">Powered by Ship</span>
-      </Header>
+      <Header>Hiring now</Header>
       <Paper borderRadius={5}>
         <ContentContainer>
-          {props.items.map((value, index) => (
+          {props.items.map((value) => (
             <Item
               key={value.name}
-              first={index === 0}
               name={value.name}
               description={value.description}
-              coverUrl={value.cover}
-              follows={value.follows}
+              location={value.location}
             ></Item>
           ))}
           <ViewAllButtonWrapper>
@@ -81,25 +86,26 @@ export default function Upcoming(props) {
               height={34}
               padding="0 13px"
             >
-              <ButtonContent>VIEW ALL</ButtonContent>
+              <ButtonContent>VIEW ALL JOBS</ButtonContent>
             </Button>
           </ViewAllButtonWrapper>
+          <PostJob>
+            Hiring?<span className="post">Post a job</span>
+          </PostJob>
         </ContentContainer>
       </Paper>
     </Component>
   );
 }
-Upcoming.propTypes = {
+Hiring.propTypes = {
   items: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string,
       description: PropTypes.string,
-      cover: PropTypes.string,
-      follows: PropTypes.number,
-      first: PropTypes.bool,
+      location: PropTypes.string,
     })
   ),
 };
-Upcoming.defaultProps = {
+Hiring.defaultProps = {
   items: [],
 };
