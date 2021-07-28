@@ -6,6 +6,7 @@ import AppBar from "../../src/components/AppBar";
 import Recommend from "../../src/components/home/Recommend";
 import PostList from "../../src/components/home/PostList";
 import LatestStory from "../../src/components/home/LatestStory";
+import Upcoming from "../../src/components/home/Upcoming";
 import { getData } from "../../api/base";
 const Container = styled("section")`
   display: flex;
@@ -36,7 +37,13 @@ const RightContainer = styled("aside")`
 `;
 
 function HomePage(props) {
-  const { version, recommendItems, todayPostItems, latestStoryItems } = props;
+  const {
+    version,
+    recommendItems,
+    todayPostItems,
+    latestStoryItems,
+    upcomingItems,
+  } = props;
   console.log("HomePage", recommendItems, todayPostItems, latestStoryItems);
   return (
     <Container>
@@ -52,6 +59,7 @@ function HomePage(props) {
         </LeftContainer>
         <RightContainer>
           <LatestStory items={latestStoryItems}></LatestStory>
+          <Upcoming items={upcomingItems}></Upcoming>
         </RightContainer>
       </ContentContainer>
     </Container>
@@ -63,11 +71,12 @@ export async function getStaticProps() {
   const recommendItems = getData("recommend");
   const todayPostItems = getData("post");
   const latestStoryItems = getData("story");
+  const upcomingItems = getData("upcoming");
 
   // By returning { props: { posts } }, the Blog component
   // will receive `posts` as a prop at build time
   return {
-    props: { recommendItems, todayPostItems, latestStoryItems },
+    props: { recommendItems, todayPostItems, latestStoryItems, upcomingItems },
   };
 }
 export default HomePage;

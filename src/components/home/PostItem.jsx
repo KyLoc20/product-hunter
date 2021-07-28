@@ -31,7 +31,6 @@ const ItemContent = styled.div`
 `;
 const ItemName = styled(BasicText)`
   font-weight: 600;
-  color: rgb(0, 0, 0);
   line-height: 24px;
 `;
 const ItemDescription = styled(BasicText)`
