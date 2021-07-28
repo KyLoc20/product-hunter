@@ -6,9 +6,7 @@ import AppBar from "../../src/components/AppBar";
 import Recommend from "../../src/components/home/Recommend";
 import PostList from "../../src/components/home/PostList";
 import LatestStory from "../../src/components/home/LatestStory";
-import { getRecommendData } from "../../data/recommend.js";
-import { getPostData } from "../../data/post.js";
-import { getStoryData } from "../../data/story.js";
+import { getData } from "../../api/base";
 const Container = styled("section")`
   display: flex;
   flex-direction: column;
@@ -62,9 +60,9 @@ function HomePage(props) {
 // This function gets called at build time
 export async function getStaticProps() {
   // Call an external API endpoint to get posts
-  const recommendItems = getRecommendData();
-  const todayPostItems = getPostData();
-  const latestStoryItems = getStoryData();
+  const recommendItems = getData("recommend");
+  const todayPostItems = getData("post");
+  const latestStoryItems = getData("story");
 
   // By returning { props: { posts } }, the Blog component
   // will receive `posts` as a prop at build time
