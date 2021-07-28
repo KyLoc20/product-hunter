@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import * as React from "react";
 import Paper from "../Paper";
 import Item from "./UpcomingItem";
+import Button from "../../../ui/Button/Button";
 const Component = styled.section`
   display: flex;
   flex-direction: column;
@@ -33,6 +34,22 @@ const ContentContainer = styled.div`
   padding: 20px;
   width: 100%;
 `;
+const ViewAllButtonWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  padding: 0 13px;
+  button {
+    transition: all 0.3s ease;
+  }
+`;
+const ButtonContent = styled.span`
+  display: flex;
+  justify-content: center;
+  width: 262px;
+  color: #cc4d29;
+  font-size: 11px;
+  line-height: 16px;
+`;
 export default function Upcoming(props) {
   return (
     <Component>
@@ -51,6 +68,19 @@ export default function Upcoming(props) {
               follows={value.follows}
             ></Item>
           ))}
+          <ViewAllButtonWrapper>
+            <Button
+              variant="outlined"
+              backgroundColor="#fff"
+              hoverBackgroundColor="#fff"
+              borderColor="#e8e8e8"
+              hoverBorderColor="#cc4d29"
+              height={34}
+              padding="0 13px"
+            >
+              <ButtonContent>VIEW ALL</ButtonContent>
+            </Button>
+          </ViewAllButtonWrapper>
         </ContentContainer>
       </Paper>
     </Component>

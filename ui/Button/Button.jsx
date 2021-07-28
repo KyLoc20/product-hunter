@@ -27,7 +27,7 @@ const ButtonComponent = styled(ButtonDefaultRemoval)`
   font-size: 0.875rem;
   font-weight: 500;
   letter-spacing: 0.0892857143em;
-  transition: background 280ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: all 280ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   overflow: hidden;
   &.disabled,
   &.loading {
