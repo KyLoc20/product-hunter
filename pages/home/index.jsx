@@ -5,8 +5,10 @@ import * as React from "react";
 import AppBar from "../../src/components/AppBar";
 import Recommend from "../../src/components/home/Recommend";
 import PostList from "../../src/components/home/PostList";
+import LatestStory from "../../src/components/home/LatestStory";
 import { getRecommendData } from "../../data/recommend.js";
 import { getPostData } from "../../data/post.js";
+import { getStoryData } from "../../data/story.js";
 const Container = styled("section")`
   display: flex;
   flex-direction: column;
@@ -30,16 +32,14 @@ const LeftContainer = styled("main")`
 const RightContainer = styled("aside")`
   display: flex;
   position: relative;
+  flex-direction: column;
   margin-top: 12px;
   margin-left: 20px;
-  width: 400px;
-  height: 100vh;
-  background: rgba(255, 255, 0, 0.3);
 `;
 
 function HomePage(props) {
-  const { version, recommendItems, todayPostItems } = props;
-  console.log("HomePage", recommendItems,todayPostItems);
+  const { version, recommendItems, todayPostItems, latestStoryItems } = props;
+  console.log("HomePage", recommendItems, todayPostItems, latestStoryItems);
   return (
     <Container>
       <Head>
@@ -52,7 +52,9 @@ function HomePage(props) {
           <Recommend items={recommendItems}></Recommend>
           <PostList title={"Today"} items={todayPostItems}></PostList>
         </LeftContainer>
-        <RightContainer></RightContainer>
+        <RightContainer>
+          <LatestStory items={latestStoryItems}></LatestStory>
+        </RightContainer>
       </ContentContainer>
     </Container>
   );
@@ -62,10 +64,12 @@ export async function getStaticProps() {
   // Call an external API endpoint to get posts
   const recommendItems = getRecommendData();
   const todayPostItems = getPostData();
+  const latestStoryItems = getStoryData();
+
   // By returning { props: { posts } }, the Blog component
   // will receive `posts` as a prop at build time
   return {
-    props: { recommendItems, todayPostItems },
+    props: { recommendItems, todayPostItems, latestStoryItems },
   };
 }
 export default HomePage;

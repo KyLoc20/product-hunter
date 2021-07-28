@@ -145,7 +145,6 @@ export default function Item(props) {
   );
 }
 Item.propTypes = {
-  right: PropTypes.bool,
   name: PropTypes.string,
   description: PropTypes.string,
   coverUrl: PropTypes.string,
