@@ -10,6 +10,7 @@ import LatestStory from "../../src/components/home/LatestStory";
 import Upcoming from "../../src/components/home/Upcoming";
 import Hiring from "../../src/components/home/Hiring";
 import Newsletter from "../../src/components/home/NewsLetter";
+import TopDiscussion from "../../src/components/home/TopDiscussion";
 const Container = styled("section")`
   display: flex;
   flex-direction: column;
@@ -46,6 +47,7 @@ function HomePage(props) {
     latestStoryItems,
     upcomingItems,
     hiringItems,
+    topDiscussionItems,
   } = props;
   // console.log("HomePage", recommendItems, todayPostItems, latestStoryItems);
   return (
@@ -65,6 +67,7 @@ function HomePage(props) {
           <Upcoming items={upcomingItems}></Upcoming>
           <Hiring items={hiringItems}></Hiring>
           <Newsletter></Newsletter>
+          <TopDiscussion items={topDiscussionItems}></TopDiscussion>
         </RightContainer>
       </ContentContainer>
     </Container>
@@ -78,6 +81,7 @@ export async function getStaticProps() {
   const latestStoryItems = getData("story");
   const upcomingItems = getData("upcoming");
   const hiringItems = getData("hiring");
+  const topDiscussionItems = getData("discussion");
   // By returning { props: { posts } }, the Blog component
   // will receive `posts` as a prop at build time
   return {
@@ -87,6 +91,7 @@ export async function getStaticProps() {
       latestStoryItems,
       upcomingItems,
       hiringItems,
+      topDiscussionItems,
     },
   };
 }

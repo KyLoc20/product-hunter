@@ -119,7 +119,7 @@ export default function Button(props) {
       return props.height
         ? `${props.height / 2}px`
         : getSize(props.size)["height"];
-    else return `4px`;
+    else return `${props.borderRadius || 4}px`;
   }, [props.tile, props.rounded, props.height, props.size]);
   const computedBackgroundColor = React.useMemo(() => {
     if (props.disabled) return getColor("disabled", props.variant, "main");
@@ -206,6 +206,7 @@ Button.propTypes = {
   hoverBackgroundColor: PropTypes.string,
   borderColor: PropTypes.string,
   hoverBorderColor: PropTypes.string,
+  borderRadius: PropTypes.string,
 };
 Button.defaultProps = {
   variant: "plain",
