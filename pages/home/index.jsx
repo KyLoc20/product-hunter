@@ -9,7 +9,7 @@ import PostList from "../../src/components/home/PostList";
 import LatestStory from "../../src/components/home/LatestStory";
 import Upcoming from "../../src/components/home/Upcoming";
 import Hiring from "../../src/components/home/Hiring";
-import Newsletter from "../../src/components/home/NewsLetter";
+import Newsletter from "../../src/components/home/Newsletter";
 import TopDiscussion from "../../src/components/home/TopDiscussion";
 const Container = styled("section")`
   display: flex;
