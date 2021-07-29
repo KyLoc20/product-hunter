@@ -9,7 +9,7 @@ import PostList from "../../src/components/home/PostList";
 import LatestStory from "../../src/components/home/LatestStory";
 import Upcoming from "../../src/components/home/Upcoming";
 import Hiring from "../../src/components/home/Hiring";
-
+import Newsletter from "../../src/components/home/NewsLetter";
 const Container = styled("section")`
   display: flex;
   flex-direction: column;
@@ -47,7 +47,7 @@ function HomePage(props) {
     upcomingItems,
     hiringItems,
   } = props;
-  console.log("HomePage", recommendItems, todayPostItems, latestStoryItems);
+  // console.log("HomePage", recommendItems, todayPostItems, latestStoryItems);
   return (
     <Container>
       <Head>
@@ -64,6 +64,7 @@ function HomePage(props) {
           <LatestStory items={latestStoryItems}></LatestStory>
           <Upcoming items={upcomingItems}></Upcoming>
           <Hiring items={hiringItems}></Hiring>
+          <Newsletter></Newsletter>
         </RightContainer>
       </ContentContainer>
     </Container>
