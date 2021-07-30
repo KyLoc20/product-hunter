@@ -25,8 +25,9 @@ const Component = styled(BasicAppBar)`
 `;
 const BasicWrapper = styled("div")`
   display: flex;
-  margin-left: 20px;
+  margin-left: 32px;
   margin-top: 20px;
+  flex-shrink: 0;
 `;
 const LogoWrapper = styled(BasicWrapper)``;
 const Logo = styled("span")`
@@ -55,7 +56,7 @@ const HowToPost = styled(BasicWrapper)`
   font-size: 16px;
   line-height: 24px;
   cursor: pointer;
-  padding-top:12px;
+  padding-top: 8px;
   background: linear-gradient(227deg, #ff4582, #e12e0d);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -65,9 +66,8 @@ const HowToPost = styled(BasicWrapper)`
   }
 `;
 
-const SignInButtonWrapper = styled.div`
-  margin-left: 32px;
-  margin-top: 32px;
+const SignInButtonWrapper = styled(BasicWrapper)`
+  padding-top: 8px;
   color: rgb(75, 88, 124);
   line-height: 24px;
   cursor: pointer;
