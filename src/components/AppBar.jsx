@@ -2,7 +2,7 @@ import * as React from "react";
 import styled from "@emotion/styled";
 import PropTypes from "prop-types";
 import Icon from "../../ui/Icon/Icon";
-import Button from "../../ui/Button/Button"
+import Button from "../../ui/Button/Button";
 import SearchInput from "./SearchInput";
 const BasicAppBar = styled("section")`
   position: fixed;
@@ -52,11 +52,10 @@ const UserGuideWrapper = styled("div")`
   display: flex;
 `;
 const HowToPost = styled(BasicWrapper)`
-  align-items: center;
   font-size: 16px;
   line-height: 24px;
   cursor: pointer;
-
+  padding-top:12px;
   background: linear-gradient(227deg, #ff4582, #e12e0d);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -65,15 +64,18 @@ const HowToPost = styled(BasicWrapper)`
     -webkit-background-clip: text;
   }
 `;
-const SignIn = styled(BasicWrapper)``;
-function SignInButton(props) {
-  return (
-    <SignIn>
-      <Button>Sign In</Button>
-    </SignIn>
-  );
-}
-const SignUp = styled(BasicWrapper)`
+
+const SignInButtonWrapper = styled.div`
+  margin-left: 32px;
+  margin-top: 32px;
+  color: rgb(75, 88, 124);
+  line-height: 24px;
+  cursor: pointer;
+  &:hover {
+    color: #f64900;
+  }
+`;
+const SignUpButtonWrapper = styled(BasicWrapper)`
   button .text {
     font-weight: 600;
     color: #fff;
@@ -81,22 +83,6 @@ const SignUp = styled(BasicWrapper)`
     line-height: 24px;
   }
 `;
-// "#f64900"
-function SignUpButton(props) {
-  return (
-    <SignUp>
-      <Button
-        height={40}
-        padding={"8px 16px"}
-        depressed
-        backgroundColor={"linear-gradient(227deg, #f64900, #f64900)"}
-        hoverBackgroundColor={"linear-gradient(227deg,#ff4582,#e12e0d)"}
-      >
-        <span className="text">Sign Up</span>
-      </Button>
-    </SignUp>
-  );
-}
 export default function AppBar(props) {
   return (
     <Component className="app-bar">
@@ -115,8 +101,18 @@ export default function AppBar(props) {
       </NavigationWrapper>
       <UserGuideWrapper>
         <HowToPost>How to post a product?</HowToPost>
-        <SignInButton></SignInButton>
-        <SignUpButton></SignUpButton>
+        <SignInButtonWrapper>Sign In</SignInButtonWrapper>
+        <SignUpButtonWrapper>
+          <Button
+            height={40}
+            padding={"8px 16px"}
+            depressed
+            backgroundColor={"linear-gradient(227deg, #f64900, #f64900)"}
+            hoverBackgroundColor={"linear-gradient(227deg,#ff4582,#e12e0d)"}
+          >
+            <span className="text">Sign Up</span>
+          </Button>
+        </SignUpButtonWrapper>
       </UserGuideWrapper>
     </Component>
   );
