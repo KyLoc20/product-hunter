@@ -206,7 +206,7 @@ Button.propTypes = {
   hoverBackgroundColor: PropTypes.string,
   borderColor: PropTypes.string,
   hoverBorderColor: PropTypes.string,
-  borderRadius: PropTypes.string,
+  borderRadius: PropTypes.number,
 };
 Button.defaultProps = {
   variant: "plain",
