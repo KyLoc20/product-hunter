@@ -11,6 +11,8 @@ import Upcoming from "../../src/components/home/Upcoming";
 import Hiring from "../../src/components/home/Hiring";
 import Newsletter from "../../src/components/home/Newsletter";
 import TopDiscussion from "../../src/components/home/TopDiscussion";
+import { useModal } from "../../src/common/responsive/modal";
+import Button from "../../ui/Button/Button";
 const Container = styled("section")`
   display: flex;
   flex-direction: column;
@@ -38,7 +40,8 @@ const RightContainer = styled("aside")`
   margin-top: 12px;
   margin-left: 20px;
 `;
-
+const ModalContainer=styled.div`
+`
 function HomePage(props) {
   const {
     version,
@@ -50,6 +53,7 @@ function HomePage(props) {
     topDiscussionItems,
   } = props;
   // console.log("HomePage", recommendItems, todayPostItems, latestStoryItems);
+  const { show, hide, RenderModal } = useModal("modal-container");
   return (
     <Container>
       <Head>
@@ -70,6 +74,8 @@ function HomePage(props) {
           <TopDiscussion items={topDiscussionItems}></TopDiscussion>
         </RightContainer>
       </ContentContainer>
+      <ModalContainer id="modal-container"></ModalContainer>
+      <RenderModal>Put Your Modal Here</RenderModal>
     </Container>
   );
 }
