@@ -40,8 +40,7 @@ const RightContainer = styled("aside")`
   margin-top: 12px;
   margin-left: 20px;
 `;
-const ModalContainer=styled.div`
-`
+const Modal=styled.div``
 function HomePage(props) {
   const {
     version,
@@ -53,7 +52,6 @@ function HomePage(props) {
     topDiscussionItems,
   } = props;
   // console.log("HomePage", recommendItems, todayPostItems, latestStoryItems);
-  const { show, hide, RenderModal } = useModal("modal-container");
   return (
     <Container>
       <Head>
@@ -61,6 +59,7 @@ function HomePage(props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <AppBar></AppBar>
+      <Modal id="modal-container"></Modal>
       <ContentContainer>
         <LeftContainer>
           <Recommend items={recommendItems}></Recommend>
@@ -74,8 +73,6 @@ function HomePage(props) {
           <TopDiscussion items={topDiscussionItems}></TopDiscussion>
         </RightContainer>
       </ContentContainer>
-      <ModalContainer id="modal-container"></ModalContainer>
-      <RenderModal>Put Your Modal Here</RenderModal>
     </Container>
   );
 }

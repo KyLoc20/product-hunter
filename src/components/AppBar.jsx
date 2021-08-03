@@ -12,7 +12,7 @@ const BasicAppBar = styled("section")`
   box-sizing: border-box;
   width: 100%;
   overflow: hidden;
-  z-index: 100;
+  z-index: 20;
 `;
 const Component = styled(BasicAppBar)`
   position: sticky;

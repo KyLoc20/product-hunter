@@ -4,6 +4,8 @@ import * as React from "react";
 import Button from "../../../ui/Button/Button";
 import Icon from "../../../ui/Icon/Icon";
 import Divider from "../Divider";
+import { useModal } from "../../common/responsive/modal";
+import ModalContainer from "../ModalContainer";
 const Component = styled.div`
   display: flex;
   padding: 20px;
@@ -94,9 +96,21 @@ const PromotedTag = styled.span`
   }
 `;
 export default function Item(props) {
+  const { show, hide, RenderModal } = useModal("modal-container");
+  const handleOpenPostDetail = (e) => {
+    console.log("handleOpenPostDetail", e.target);
+    show();
+  };
+  const handleClosePostDetail = () => {
+    console.log("handleClosePostDetail");
+    hide();
+  };
   return (
-    <Component>
-      <Image src={props.coverUrl} alt={props.name} />
+    <Component onClick={handleOpenPostDetail}>
+      <Image
+        src={props.coverUrl}
+        alt={props.name}
+      />
       <ItemContent>
         <ItemName>{props.name}</ItemName>
         <ItemDescription>{props.description}</ItemDescription>
@@ -140,6 +154,9 @@ export default function Item(props) {
           </LikeButtonInnerContent>
         </Button>
       </LikeButtonWrapper>
+      <RenderModal>
+        <ModalContainer onClose={handleClosePostDetail}></ModalContainer>
+      </RenderModal>
     </Component>
   );
 }
