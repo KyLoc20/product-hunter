@@ -62,11 +62,11 @@ const CommentButtonInnerContent = styled.span`
     padding-left: 2px;
   }
 `;
-const LikeButtonWrapper = styled.div`
+const VoteButtonWrapper = styled.div`
   margin-left: 20px;
   height: 74px;
 `;
-const LikeButtonInnerContent = styled.div`
+const VoteButtonInnerContent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -97,20 +97,17 @@ const PromotedTag = styled.span`
 `;
 export default function Item(props) {
   const { show, hide, RenderModal } = useModal("modal-container");
+
   const handleOpenPostDetail = (e) => {
     console.log("handleOpenPostDetail", e.target);
     show();
   };
-  const handleClosePostDetail = () => {
-    console.log("handleClosePostDetail");
+  const handleClosePostDetail = (e) => {
     hide();
   };
   return (
     <Component onClick={handleOpenPostDetail}>
-      <Image
-        src={props.coverUrl}
-        alt={props.name}
-      />
+      <Image src={props.coverUrl} alt={props.name} />
       <ItemContent>
         <ItemName>{props.name}</ItemName>
         <ItemDescription>{props.description}</ItemDescription>
@@ -139,7 +136,7 @@ export default function Item(props) {
           )}
         </Meta>
       </ItemContent>
-      <LikeButtonWrapper>
+      <VoteButtonWrapper>
         <Button
           height={74}
           padding={"0 8px"}
@@ -148,12 +145,12 @@ export default function Item(props) {
           hoverBackgroundColor="#f9f9f9"
           borderColor="#e8e8e8"
         >
-          <LikeButtonInnerContent>
+          <VoteButtonInnerContent>
             <Icon name="upTriangle" size={25}></Icon>
             <span className="text">{props.comments}</span>
-          </LikeButtonInnerContent>
+          </VoteButtonInnerContent>
         </Button>
-      </LikeButtonWrapper>
+      </VoteButtonWrapper>
       <RenderModal>
         <ModalContainer onClose={handleClosePostDetail}></ModalContainer>
       </RenderModal>
@@ -164,7 +161,7 @@ Item.propTypes = {
   name: PropTypes.string,
   description: PropTypes.string,
   coverUrl: PropTypes.string,
-  likes: PropTypes.number,
+  votes: PropTypes.number,
   comments: PropTypes.number,
   pricingType: PropTypes.string,
   topic: PropTypes.string,

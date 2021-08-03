@@ -74,7 +74,7 @@ export default function PostList(props) {
         name={value.name}
         description={value.description}
         coverUrl={value.cover}
-        likes={value.likes}
+        votes={value.votes}
         comments={value.comments}
         pricingType={value.pricingType}
         topic={value.topic}
@@ -121,7 +121,7 @@ PostList.propTypes = {
       name: PropTypes.string,
       description: PropTypes.string,
       cover: PropTypes.string,
-      likes: PropTypes.number,
+      votes: PropTypes.number,
       comments: PropTypes.number,
       pricingType: PropTypes.string,
       topic: PropTypes.string,

@@ -89,7 +89,7 @@ Item.propTypes = {
   name: PropTypes.string,
   description: PropTypes.string,
   coverUrl: PropTypes.string,
-  likes: PropTypes.number,
+  votes: PropTypes.number,
 };
 Item.defaultProps = {
   right: false,
@@ -107,7 +107,7 @@ export default function Recommend(props) {
               name={value.name}
               description={value.description}
               coverUrl={value.cover}
-              likes={value.likes}
+              votes={value.votes}
             ></Item>
           ))}
         </ContentContainer>
@@ -122,7 +122,7 @@ Recommend.propTypes = {
       name: PropTypes.string,
       description: PropTypes.string,
       cover: PropTypes.string,
-      likes: PropTypes.number,
+      votes: PropTypes.number,
     })
   ),
 };

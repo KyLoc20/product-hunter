@@ -66,8 +66,8 @@ const BasicButtonContent = styled.span`
   }
 `;
 
-const LikesButtonWrapper = styled(BasicButtonWrapper)``;
-const LikesButtonContent = styled(BasicButtonContent)`
+const VoteButtonWrapper = styled(BasicButtonWrapper)``;
+const VoteButtonContent = styled(BasicButtonContent)`
   .icon {
     margin-left: -5px;
   }
@@ -100,7 +100,7 @@ export default function Item(props) {
       <ItemContent>
         <ItemName>{props.name}</ItemName>
         <Actions>
-          <LikesButtonWrapper>
+          <VoteButtonWrapper>
             <Button
               variant="text"
               height={24}
@@ -108,12 +108,12 @@ export default function Item(props) {
               hoverBackgroundColor="#e8e8e8"
               borderRadius={3}
             >
-              <LikesButtonContent>
+              <VoteButtonContent>
                 <Icon name="upTriangle" size={24}></Icon>
-                <span className="text">{props.likes}</span>
-              </LikesButtonContent>
+                <span className="text">{props.votes}</span>
+              </VoteButtonContent>
             </Button>
-          </LikesButtonWrapper>
+          </VoteButtonWrapper>
           <CommentsButtonWrapper>
             <Button
               variant="text"
@@ -140,7 +140,7 @@ export default function Item(props) {
 Item.propTypes = {
   name: PropTypes.string,
   avatarUrl: PropTypes.string,
-  likes: PropTypes.number,
+  votes: PropTypes.number,
   comments: PropTypes.number,
 };
 Item.defaultProps = {};

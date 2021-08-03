@@ -2,6 +2,8 @@ import * as React from "react";
 import styled from "@emotion/styled";
 import PropTypes from "prop-types";
 import Icon from "../../ui/Icon/Icon";
+import Header from "./post/Header";
+import { getPostDetailData } from "../../data/postDetail";
 const Container = styled.div`
   position: absolute;
   display: flex;
@@ -47,10 +49,18 @@ const CloseButtonWrapper = styled.div`
   }
 `;
 export default function ModalContainer(props) {
+  const [postDetailData, setPostDetailData] = React.useState({});
+  const [isLoading, setIsLoading] = React.useState(false);
+  React.useEffect(() => {
+    const data = getPostDetailData()[0];
+    console.log("load data for modal", data);
+    setPostDetailData(data);
+    setIsLoading(true);
+  }, []);
   const handleCloseModal = (e) => {
     //todo IMPORTANT to stopPropagation because it will trigger the parent components' onClick
     e.stopPropagation();
-    props.onClose?.();
+    props.onClose?.(e);
   };
   const handleKeepModalOpen = (e) => {
     e.stopPropagation();
@@ -60,7 +70,17 @@ export default function ModalContainer(props) {
       <CloseButtonWrapper onClick={handleCloseModal}>
         <Icon name="cross1" size={12}></Icon>
       </CloseButtonWrapper>
-      <ContentContainer onClick={handleKeepModalOpen}></ContentContainer>
+      <ContentContainer onClick={handleKeepModalOpen}>
+        <Header
+          name={postDetailData.name}
+          description={postDetailData.description}
+          coverUrl={postDetailData.cover}
+          pricingType={postDetailData.pricingType}
+          topicItems={postDetailData.topicItems}
+          rank={postDetailData.rank}
+          rankDate={postDetailData.rankDate}
+        ></Header>
+      </ContentContainer>
     </Container>
   );
 }

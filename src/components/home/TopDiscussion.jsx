@@ -52,7 +52,7 @@ export default function TopDiscussion(props) {
               key={value.name}
               name={value.name}
               avatarUrl={value.avatar}
-              likes={value.likes}
+              votes={value.votes}
               comments={value.comments}
             ></Item>
           ))}
@@ -67,7 +67,7 @@ TopDiscussion.propTypes = {
     PropTypes.shape({
       name: PropTypes.string,
       avatar: PropTypes.string,
-      likes: PropTypes.number,
+      votes: PropTypes.number,
       comments: PropTypes.number,
     })
   ),
