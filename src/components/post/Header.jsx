@@ -3,12 +3,13 @@ import styled from "@emotion/styled";
 import PropTypes from "prop-types";
 import RankBanner from "./RankBanner";
 import Button from "../../../ui/Button/Button";
-const Component = styled.div`
+const Component = styled.section`
   display: flex;
   align-items: center;
   width: 100%;
-  height: 100px;
+  height: 160px;
   padding: 30px 15px;
+  box-sizing: border-box;
   justify-content: space-between;
 `;
 const Image = styled.img`
@@ -108,7 +109,6 @@ export default function Header(props) {
 }
 Header.propTypes = {
   name: PropTypes.string,
-  description: PropTypes.string,
   coverUrl: PropTypes.string,
   pricingType: PropTypes.string,
   topicItems: PropTypes.arrayOf(PropTypes.string),

@@ -144,8 +144,22 @@ export default function Button(props) {
   ]);
   const computedContentColor = React.useMemo(() => {
     if (props.disabled) return getColor("disabled", props.variant, "text");
-    return props.contentColor || getColor(props.color, props.variant, "text");
-  }, [props.disabled, props.variant, props.contentColor, props.color]);
+    if (isHovering)
+      return (
+        props.hoverContentColor ||
+        props.contentColor ||
+        getColor(props.color, props.variant, "text")
+      );
+    else
+      return props.contentColor || getColor(props.color, props.variant, "text");
+  }, [
+    isHovering,
+    props.disabled,
+    props.variant,
+    props.contentColor,
+    props.hoverContentColor,
+    props.color,
+  ]);
   const computedRippleColor = React.useMemo(() => {
     return props.rippleColor || getColor(props.color, props.variant, "ripple");
   }, [props.rippleColor, props.color, props.variant]);
@@ -207,6 +221,8 @@ Button.propTypes = {
   hoverBackgroundColor: PropTypes.string,
   borderColor: PropTypes.string,
   hoverBorderColor: PropTypes.string,
+  contentColor: PropTypes.string,
+  hoverContentColor: PropTypes.string,
   borderRadius: PropTypes.number,
 };
 Button.defaultProps = {

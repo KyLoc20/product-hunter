@@ -1,9 +1,10 @@
 import * as React from "react";
 import styled from "@emotion/styled";
 import PropTypes from "prop-types";
+import { getPostDetailData } from "../../../data/postDetail";
 import Icon from "../../../ui/Icon/Icon";
 import Header from "./Header";
-import { getPostDetailData } from "../../../data/postDetail";
+import ProductContent from "./ProductContent";
 const Container = styled.div`
   position: absolute;
   display: flex;
@@ -17,7 +18,8 @@ const Container = styled.div`
 `;
 const ContentContainer = styled("main")`
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   margin: 100px 0 40px;
   padding: 20px;
   width: 1100px;
@@ -47,6 +49,23 @@ const CloseButtonWrapper = styled.div`
   .icon {
     margin-top: -4px;
   }
+`;
+const ContainerWrapper = styled.div`
+  display: flex;
+  padding: 0 15px;
+`;
+const LeftContainer = styled.section`
+  display: flex;
+  flex-direction: column;
+  width: 710px;
+`;
+const RightContainer = styled.aside`
+  display: flex;
+  flex-direction: column;
+  margin-left: 30px;
+  width: 330px;
+  min-height: 100vh;
+  background: rgba(255, 255, 0, 0.3);
 `;
 export default function ModalContainer(props) {
   const [postDetailData, setPostDetailData] = React.useState({});
@@ -80,6 +99,15 @@ export default function ModalContainer(props) {
           rank={postDetailData.rank}
           rankDate={postDetailData.rankDate}
         ></Header>
+        <ContainerWrapper>
+          <LeftContainer>
+            <ProductContent
+              introductionItems={postDetailData.introductionItems}
+              promo={postDetailData.promo}
+            ></ProductContent>
+          </LeftContainer>
+          <RightContainer></RightContainer>
+        </ContainerWrapper>
       </ContentContainer>
     </Container>
   );
