@@ -1,9 +1,9 @@
 import * as React from "react";
 import styled from "@emotion/styled";
 import PropTypes from "prop-types";
-import Icon from "../../ui/Icon/Icon";
-import Header from "./post/Header";
-import { getPostDetailData } from "../../data/postDetail";
+import Icon from "../../../ui/Icon/Icon";
+import Header from "./Header";
+import { getPostDetailData } from "../../../data/postDetail";
 const Container = styled.div`
   position: absolute;
   display: flex;

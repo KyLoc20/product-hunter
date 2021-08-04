@@ -5,7 +5,7 @@ import Button from "../../../ui/Button/Button";
 import Icon from "../../../ui/Icon/Icon";
 import Divider from "../Divider";
 import { useModal } from "../../common/responsive/modal";
-import ModalContainer from "../ModalContainer";
+import ModalContainer from "../post/ModalContainer";
 const Component = styled.div`
   display: flex;
   padding: 20px;

@@ -127,6 +127,7 @@ export default function Button(props) {
     if (isHovering)
       return (
         props.hoverBackgroundColor ||
+        props.backgroundColor ||
         getColor(props.color, props.variant, "focus")
       );
     else
