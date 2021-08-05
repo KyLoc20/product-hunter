@@ -6,6 +6,7 @@ import Icon from "../../../ui/Icon/Icon";
 import Header from "./Header";
 import ProductContent from "./ProductContent";
 import VoteContent from "./VoteContent";
+import Producer from "./Producer";
 const Container = styled.div`
   position: absolute;
   display: flex;
@@ -108,6 +109,10 @@ export default function ModalContainer(props) {
           </LeftContainer>
           <RightContainer>
             <VoteContent votes={postDetailData.votes}></VoteContent>
+            <Producer
+              hunter={postDetailData.hunter}
+              makerItems={postDetailData.makerItems}
+            ></Producer>
           </RightContainer>
         </ContainerWrapper>
       </ContentContainer>

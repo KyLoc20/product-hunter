@@ -5,6 +5,7 @@ import Button from "../../../ui/Button/Button";
 import Icon from "../../../ui/Icon/Icon";
 const Component = styled.section`
   width: 330px;
+  margin-bottom: 20px;
 `;
 const ContentContainer = styled.div`
   display: flex;
