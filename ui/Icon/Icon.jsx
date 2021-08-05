@@ -9,8 +9,10 @@ const Component = styled.span`
   position: relative;
   vertical-align: middle;
   text-align: center;
+  box-sizing: border-box;
   transition: fill, background-color 500ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 `;
+//todo with border-box it is availabel to use .icon{margin,padding} to adjust the svg
 const SizeMap = {
   sm: 20,
   md: 24,

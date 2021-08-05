@@ -5,6 +5,7 @@ import { getPostDetailData } from "../../../data/postDetail";
 import Icon from "../../../ui/Icon/Icon";
 import Header from "./Header";
 import ProductContent from "./ProductContent";
+import VoteContent from "./VoteContent";
 const Container = styled.div`
   position: absolute;
   display: flex;
@@ -65,7 +66,6 @@ const RightContainer = styled.aside`
   margin-left: 30px;
   width: 330px;
   min-height: 100vh;
-  background: rgba(255, 255, 0, 0.3);
 `;
 export default function ModalContainer(props) {
   const [postDetailData, setPostDetailData] = React.useState({});
@@ -106,7 +106,9 @@ export default function ModalContainer(props) {
               promo={postDetailData.promo}
             ></ProductContent>
           </LeftContainer>
-          <RightContainer></RightContainer>
+          <RightContainer>
+            <VoteContent votes={postDetailData.votes}></VoteContent>
+          </RightContainer>
         </ContainerWrapper>
       </ContentContainer>
     </Container>
