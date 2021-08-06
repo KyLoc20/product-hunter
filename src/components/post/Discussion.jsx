@@ -2,6 +2,8 @@ import * as React from "react";
 import styled from "@emotion/styled";
 import PropTypes from "prop-types";
 import Icon from "../../../ui/Icon/Icon";
+import Paper from "../Paper";
+import useButton from "../common/useButton";
 const Component = styled.section`
   width: 710px;
 `;
@@ -26,6 +28,7 @@ const Header = styled.div`
   }
 `;
 export default function Discussion(props) {
+  const [SendButton]=useButton({height:34,padding:"0 13px",backgroundColor:"#cc4d29",hoverBackgroundColor:"#e4461b"})
   return (
     <Component>
       <Header>
@@ -34,6 +37,7 @@ export default function Discussion(props) {
           FOLLOW DISCUSSION <Icon name="query" size={12}></Icon>
         </span>
       </Header>
+      <SendButton>SEND</SendButton>
     </Component>
   );
 }
