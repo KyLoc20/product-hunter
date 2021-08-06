@@ -4,7 +4,7 @@ import * as React from "react";
 import Button from "../../../ui/Button/Button";
 import Icon from "../../../ui/Icon/Icon";
 import Divider from "../Divider";
-import { useModal } from "../../common/responsive/modal";
+import { useModal } from "../common/modal";
 import ModalContainer from "../post/ModalContainer";
 const Component = styled.div`
   display: flex;

@@ -7,6 +7,7 @@ import Header from "./Header";
 import ProductContent from "./ProductContent";
 import VoteContent from "./VoteContent";
 import Producer from "./Producer";
+import Discussion from "./Discussion";
 const Container = styled.div`
   position: absolute;
   display: flex;
@@ -106,6 +107,7 @@ export default function ModalContainer(props) {
               introductionItems={postDetailData.introductionItems}
               promo={postDetailData.promo}
             ></ProductContent>
+            <Discussion></Discussion>
           </LeftContainer>
           <RightContainer>
             <VoteContent votes={postDetailData.votes}></VoteContent>

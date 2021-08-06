@@ -89,6 +89,9 @@ Maker.propTypes = {
     })
   ),
 };
+Maker.defaultProps = {
+  makerItems: [],
+};
 const UserItemComponent = styled.div`
   display: flex;
   height: 40px;

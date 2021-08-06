@@ -11,8 +11,6 @@ import Upcoming from "../../src/components/home/Upcoming";
 import Hiring from "../../src/components/home/Hiring";
 import Newsletter from "../../src/components/home/Newsletter";
 import TopDiscussion from "../../src/components/home/TopDiscussion";
-import { useModal } from "../../src/common/responsive/modal";
-import Button from "../../ui/Button/Button";
 const Container = styled("section")`
   display: flex;
   flex-direction: column;
