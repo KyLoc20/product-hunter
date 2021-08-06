@@ -32,7 +32,7 @@ const useButton = ({
         contentColor={contentColor}
         hoverContentColor={hoverContentColor}
         borderRadius={borderRadius}
-        depressed={depressed||true}
+        depressed={depressed || true}
         rippleDisabled={rippleDisabled}
         disabled={disabled}
       >
@@ -42,4 +42,39 @@ const useButton = ({
   };
   return [RenderButton];
 };
-export default useButton;
+const BasicInnerContent = styled.span((props) => ({
+  display: "flex",
+  //by default controlled by [Button]
+  color: props.color || "inherit",
+  letterSpacing: props.letterSpacing || "normal",
+  lineHeight: `${props.lineHeight}px`,
+  fontSize: `${props.fontSize}px`,
+  fontWeight: props.fontWeight,
+}));
+const useButtonInnerContent = ({
+  color,
+  letterSpacing,
+  lineHeight,
+  fontSize,
+  fontWeight,
+  LS,
+  LH,
+  FS,
+  FW,
+}) => {
+  const RenderButtonInnerContent = (props) => {
+    return (
+      <BasicInnerContent
+        color={color}
+        letterSpacing={letterSpacing || LS}
+        lineHeight={lineHeight || LH}
+        fontSize={fontSize || FS}
+        fontWeight={fontWeight || FW}
+      >
+        {props.children}
+      </BasicInnerContent>
+    );
+  };
+  return [RenderButtonInnerContent];
+};
+export { useButton, useButtonInnerContent };

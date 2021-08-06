@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import PropTypes from "prop-types";
 import Icon from "../../../ui/Icon/Icon";
 import Paper from "../Paper";
-import useButton from "../common/useButton";
+import {useButton,useButtonInnerContent} from "../common/useButton";
 const Component = styled.section`
   width: 710px;
 `;
@@ -28,7 +28,18 @@ const Header = styled.div`
   }
 `;
 export default function Discussion(props) {
-  const [SendButton]=useButton({height:34,padding:"0 13px",backgroundColor:"#cc4d29",hoverBackgroundColor:"#e4461b"})
+  const [SendButton] = useButton({
+    height: 34,
+    padding: "0 13px",
+    backgroundColor: "#cc4d29",
+    hoverBackgroundColor: "#e4461b",
+  });
+  const [SendButtonContent] = useButtonInnerContent({
+    color: "#fff",
+    FW: 600,
+    FS:11,
+    LH:16,
+  });
   return (
     <Component>
       <Header>
@@ -37,7 +48,7 @@ export default function Discussion(props) {
           FOLLOW DISCUSSION <Icon name="query" size={12}></Icon>
         </span>
       </Header>
-      <SendButton>SEND</SendButton>
+      <SendButton><SendButtonContent>SEND</SendButtonContent></SendButton>
     </Component>
   );
 }
