@@ -35,7 +35,6 @@ const ButtonComponent = styled(ButtonDefaultRemoval)`
   }
 `;
 const Content = styled("span")`
-  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;

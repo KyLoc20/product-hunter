@@ -3,10 +3,17 @@ import styled from "@emotion/styled";
 import PropTypes from "prop-types";
 import Icon from "../../../ui/Icon/Icon";
 import Paper from "../Paper";
-import {useButton,useButtonInnerContent} from "../common/useButton";
+import { useButton, useButtonInnerContent } from "../common/useButton";
 const Component = styled.section`
   width: 710px;
 `;
+const ContentContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  width: 100%;
+`;
+
 const Header = styled.div`
   display: flex;
   height: 34px;
@@ -27,7 +34,40 @@ const Header = styled.div`
     }
   }
 `;
-export default function Discussion(props) {
+const WannaReviewComponent = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 670px;
+  height: 100px;
+`;
+const WannaReviewHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+const Reminder = styled.div`
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 20px;
+  button {
+    margin-left: 10px;
+  }
+`;
+
+const Stats = styled.div``;
+const ReviewButtonProps = {
+  variant: "outlined",
+  height: 24,
+  padding: "0 8px",
+  borderColor: "#fff",
+  borderRadius: 3,
+};
+const ReviewButtonContentProps = {
+  FW: 600,
+  FS: 11,
+  LH: 16,
+};
+function WannaReview(props) {
   const [SendButton] = useButton({
     height: 34,
     padding: "0 13px",
@@ -37,9 +77,49 @@ export default function Discussion(props) {
   const [SendButtonContent] = useButtonInnerContent({
     color: "#fff",
     FW: 600,
-    FS:11,
-    LH:16,
+    FS: 11,
+    LH: 16,
   });
+  const [YesButton] = useButton({
+    ...ReviewButtonProps,
+    hoverBorderColor: "#36930d",
+    contentColor: "#36930d",
+    backgroundColor: "#f1f8e5",
+  });
+  const [YesButtonContent] = useButtonInnerContent({
+    ...ReviewButtonContentProps,
+  });
+  const [NoButton] = useButton({
+    ...ReviewButtonProps,
+    hoverBorderColor: "#d74343",
+    contentColor: "#d74343",
+    backgroundColor: "#feeded",
+  });
+  const [NoButtonContent] = useButtonInnerContent({
+    ...ReviewButtonContentProps,
+  });
+  return (
+    <WannaReviewComponent>
+      <WannaReviewHeader>
+        <Reminder>
+          Would you recommend this product?
+          <YesButton>
+            <YesButtonContent>YES</YesButtonContent>
+          </YesButton>
+          <NoButton>
+            <NoButtonContent>NO</NoButtonContent>
+          </NoButton>
+        </Reminder>
+        <Stats></Stats>
+      </WannaReviewHeader>
+      <SendButton>
+        <SendButtonContent>SEND</SendButtonContent>
+      </SendButton>
+    </WannaReviewComponent>
+  );
+}
+
+export default function Discussion(props) {
   return (
     <Component>
       <Header>
@@ -48,7 +128,11 @@ export default function Discussion(props) {
           FOLLOW DISCUSSION <Icon name="query" size={12}></Icon>
         </span>
       </Header>
-      <SendButton><SendButtonContent>SEND</SendButtonContent></SendButton>
+      <Paper>
+        <ContentContainer>
+          <WannaReview></WannaReview>
+        </ContentContainer>
+      </Paper>
     </Component>
   );
 }

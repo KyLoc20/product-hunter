@@ -17,6 +17,7 @@ const useButton = ({
   depressed,
   rippleDisabled,
   disabled,
+  tile,
 }) => {
   const RenderButton = (props) => {
     return (
@@ -35,6 +36,7 @@ const useButton = ({
         depressed={depressed || true}
         rippleDisabled={rippleDisabled}
         disabled={disabled}
+        tile={tile}
       >
         {props.children}
       </Button>
