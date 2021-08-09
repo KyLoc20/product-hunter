@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import Icon from "../../../ui/Icon/Icon";
 import Paper from "../Paper";
 import { useButton, useButtonInnerContent } from "../common/useButton";
+import { useInput } from "../common/useInput";
 const Component = styled.section`
   width: 710px;
 `;
@@ -42,8 +43,10 @@ const WannaReviewComponent = styled.div`
   height: 100px;
 `;
 const WannaReviewHeader = styled.div`
+  width: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 `;
 const Reminder = styled.div`
   font-size: 13px;
@@ -55,6 +58,30 @@ const Reminder = styled.div`
 `;
 
 const Stats = styled.div``;
+const ReviewNum = styled.span`
+  font-size: 13px;
+  line-height: 20px;
+  color: #6f6f6f;
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+const RatingsWrapper = styled.span`
+  margin-left: 10px;
+`;
+const SendButtonProps = {
+  height: 34,
+  padding: "0 13px",
+  backgroundColor: "#cc4d29",
+  hoverBackgroundColor: "#e4461b",
+};
+const SendButtonContentProps = {
+  color: "#fff",
+  FW: 600,
+  FS: 11,
+  LH: 16,
+};
 const ReviewButtonProps = {
   variant: "outlined",
   height: 24,
@@ -67,18 +94,32 @@ const ReviewButtonContentProps = {
   FS: 11,
   LH: 16,
 };
+const RatingButtonProps = {
+  height: 33,
+  padding: "8px 10px",
+  backgroundColor: "#f1f8e5",
+  contentColor: "#36930d",
+  borderRadius: 3,
+};
+const RatingButtonContentProps = {
+  FW: 600,
+  FS: 13,
+};
+const ReviewFormComponent = styled.form`
+  display: flex;
+  margin-top: 20px;
+  width: 670px;
+  height: 34px;
+`;
+function ReviewForm(props) {
+  return <ReviewFormComponent>{props.children}</ReviewFormComponent>;
+}
 function WannaReview(props) {
   const [SendButton] = useButton({
-    height: 34,
-    padding: "0 13px",
-    backgroundColor: "#cc4d29",
-    hoverBackgroundColor: "#e4461b",
+    ...SendButtonProps,
   });
   const [SendButtonContent] = useButtonInnerContent({
-    color: "#fff",
-    FW: 600,
-    FS: 11,
-    LH: 16,
+    ...SendButtonContentProps,
   });
   const [YesButton] = useButton({
     ...ReviewButtonProps,
@@ -98,6 +139,12 @@ function WannaReview(props) {
   const [NoButtonContent] = useButtonInnerContent({
     ...ReviewButtonContentProps,
   });
+  const [RatingButton] = useButton({ ...RatingButtonProps });
+  const [RatingButtonContent] = useButtonInnerContent({
+    ...RatingButtonContentProps,
+  });
+
+  const [ReviewInput] = useInput({});
   return (
     <WannaReviewComponent>
       <WannaReviewHeader>
@@ -110,14 +157,30 @@ function WannaReview(props) {
             <NoButtonContent>NO</NoButtonContent>
           </NoButton>
         </Reminder>
-        <Stats></Stats>
+        <Stats>
+          <ReviewNum>{props.reviews} Reviews</ReviewNum>
+          <RatingsWrapper>
+            <RatingButton>
+              <RatingButtonContent>{`${parseFloat(props.ratings).toFixed(
+                1
+              )}/5`}</RatingButtonContent>
+            </RatingButton>
+          </RatingsWrapper>
+        </Stats>
       </WannaReviewHeader>
-      <SendButton>
-        <SendButtonContent>SEND</SendButtonContent>
-      </SendButton>
+      <ReviewForm>
+        <ReviewInput></ReviewInput>
+        <SendButton>
+          <SendButtonContent>SEND</SendButtonContent>
+        </SendButton>
+      </ReviewForm>
     </WannaReviewComponent>
   );
 }
+WannaReview.propTypes = {
+  reviews: PropTypes.number,
+  ratings: PropTypes.number,
+};
 
 export default function Discussion(props) {
   return (
@@ -130,10 +193,13 @@ export default function Discussion(props) {
       </Header>
       <Paper>
         <ContentContainer>
-          <WannaReview></WannaReview>
+          <WannaReview reviews={props.reviews} ratings={props.ratings}></WannaReview>
         </ContentContainer>
       </Paper>
     </Component>
   );
 }
-Discussion.propTypes = {};
+Discussion.propTypes = {
+  reviews: PropTypes.number,
+  ratings: PropTypes.number,
+};

@@ -124,7 +124,6 @@ const UserIntroduction = styled(NoWrapText)`
   color: #6f6f6f;
 `;
 function UserItem(props) {
-  console.log("UserItem", props);
   return (
     <UserItemComponent className="user-item">
       <Avatar src={props.avatarUrl}></Avatar>

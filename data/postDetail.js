@@ -9,6 +9,8 @@ const PostDetailData = [{
     introductionItems: ["Tactic puts collaboration and personal connection at the center of your hybrid organization. ❤️", "We bring teams together in the office and provide companies with data to make long-term decisions based on office space usage. 😎"],
     promo: "10% OFF",
     votes: 750,
+    reviews: 11,
+    ratings: 5.0,
     hunter: {
         name: "Chris Barcus",
         introduction: "Co-founder @ Tactic",

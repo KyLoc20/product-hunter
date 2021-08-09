@@ -107,7 +107,10 @@ export default function ModalContainer(props) {
               introductionItems={postDetailData.introductionItems}
               promo={postDetailData.promo}
             ></ProductContent>
-            <Discussion></Discussion>
+            <Discussion
+              reviews={postDetailData.reviews}
+              ratings={postDetailData.ratings}
+            ></Discussion>
           </LeftContainer>
           <RightContainer>
             <VoteContent votes={postDetailData.votes}></VoteContent>
