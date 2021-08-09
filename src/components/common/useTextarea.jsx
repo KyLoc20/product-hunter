@@ -18,6 +18,7 @@ const DefaultTheme = {
   fontWeight: 400,
   fontSize: "13px",
 };
+//todo ::placeholder its weird to require font-family 
 const TextareaComponent = styled.textarea`
   padding: 0;
   width: ${(props) => getValueTolerantly(props, "width", DefaultTheme)};
@@ -41,8 +42,9 @@ const TextareaComponent = styled.textarea`
   }
   &::placeholder {
     font-size: 13px;
-    line-height: 17px;
+    line-height: 20px;
     color: #6f6f6f;
+    font-family: 'Roboto';
   }
 `;
 const parseNumberWithPx = (v) => `${v}px`;
@@ -65,6 +67,7 @@ function BasicTextarea(props) {
     let numRowsOfContent = inputValue.split("\n").length;
     setIdealHeight((numRowsOfContent > 10 ? 10 : numRowsOfContent) * 20 + 12);
     // console.log("Watching Height: ", numRowsOfContent, numRowsOfContent * 20 + 12);
+    props.onChange?.({ value: inputValue });
   }, [inputValue]);
   const handleChange = (e) => {
     // console.log("handleChange", e.target.value.split("\n"));
@@ -106,6 +109,7 @@ BasicTextarea.propTypes = {
   fontSize: PropTypes.number,
   placeholder: PropTypes.string,
   autoHeight: PropTypes.bool,
+  onChange: PropTypes.func,
 };
 const useTextarea = ({
   width,
@@ -133,6 +137,7 @@ const useTextarea = ({
         fontWeight={fontWeight}
         fontSize={fontSize}
         placeholder={props.placeholder}
+        onChange={props.onChange}
       >
         {props.children}
       </BasicTextarea>

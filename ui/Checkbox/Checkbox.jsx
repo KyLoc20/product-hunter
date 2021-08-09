@@ -51,22 +51,14 @@ export default function Checkbox(props) {
     [props.disabled, props.checked]
   );
   const computedIcon = React.useMemo(() => {
-    let icon = isChecked
-      ? props.iconChecked || "checkedBox"
-      : props.icon || "emptyBox";
+    let icon = isChecked ? props.iconChecked || "checkedBox" : props.icon || "emptyBox";
     return icon;
   }, [isChecked, props.icon, props.iconChecked]);
   const computedIconColor = React.useMemo(() => {
     if (props.disabled) return "rgba(0, 0, 0, 0.26)";
     if (!isChecked) return props.iconDefaultColor || "rgba(0, 0, 0, 0.54)";
     else return props.iconColor || getColor(props.color, "checked");
-  }, [
-    isChecked,
-    props.disabled,
-    props.iconColor,
-    props.iconDefaultColor,
-    props.color,
-  ]);
+  }, [isChecked, props.disabled, props.iconColor, props.iconDefaultColor, props.color]);
   const computedIconSize = React.useMemo(() => {
     return props.iconSize || getSize(props.size, "icon");
   }, [props.size, props.iconSize]);
@@ -75,8 +67,7 @@ export default function Checkbox(props) {
   }, [props.size, props.iconSize]);
   const computedIconWrapperHaloColor = React.useMemo(() => {
     if (props.disabled) return null;
-    if (isHovering)
-      return props.iconHoverColor || getColor(props.color, "hover");
+    if (isHovering) return props.iconHoverColor || getColor(props.color, "hover");
     else return null;
   }, [isHovering, props.disabled, props.color, props.iconHoverColor]);
   const computedRippleColor = React.useMemo(() => {
@@ -85,6 +76,9 @@ export default function Checkbox(props) {
   const computedLabelTextColor = React.useMemo(() => {
     return props.disabled ? "rgba(0, 0, 0, 0.38)" : "rgba(0, 0, 0, 0.6)";
   }, [props.disabled]);
+  const computedLabelTextFontSize = React.useMemo(() => {
+    return `${props.labelFontSize || 16}px`;
+  }, [props.labelFontSize]);
   const computedFlexPosition = React.useMemo(() => {
     return { flexDirection: FlexDirectionMap[props.labelPlacement] || "row" };
   }, [props.labelPlacement]);
@@ -113,10 +107,7 @@ export default function Checkbox(props) {
     setIsHovering(false);
   };
   return (
-    <CheckboxComponent
-      className={computedClasses}
-      style={{ ...computedFlexPosition }}
-    >
+    <CheckboxComponent className={computedClasses} style={{ ...computedFlexPosition }}>
       <IconWrapper
         style={{
           height: computedIconWrapperSize,
@@ -131,7 +122,7 @@ export default function Checkbox(props) {
         <Icon name={computedIcon} size={computedIconSize}></Icon>
       </IconWrapper>
       <LabelWrapper
-        style={{ color: computedLabelTextColor }}
+        style={{ color: computedLabelTextColor, fontSize: computedLabelTextFontSize }}
         onMouseDown={handleClickLabel}
       >
         {props.label}
@@ -141,18 +132,8 @@ export default function Checkbox(props) {
 }
 Checkbox.propTypes = {
   label: PropTypes.string,
-  size: PropTypes.oneOfType([
-    PropTypes.oneOf(["sm", "md", "lg"]),
-    PropTypes.number,
-  ]), //the size of checkbox, the size of icon inside is smaller than it automatically
-  color: PropTypes.oneOf([
-    "default",
-    "primary",
-    "success",
-    "info",
-    "warning",
-    "error",
-  ]), //color theme
+  size: PropTypes.oneOfType([PropTypes.oneOf(["sm", "md", "lg"]), PropTypes.number]), //the size of checkbox, the size of icon inside is smaller than it automatically
+  color: PropTypes.oneOf(["default", "primary", "success", "info", "warning", "error"]), //color theme
   disabled: PropTypes.bool,
   checked: PropTypes.bool,
   onChange: PropTypes.func,
@@ -168,6 +149,7 @@ Checkbox.propTypes = {
   //size custom
   iconSize: PropTypes.number,
   //label custom
+  labelFontSize: PropTypes.number,
   renderLabel: PropTypes.func,
 };
 Checkbox.defaultProps = {

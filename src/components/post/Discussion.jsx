@@ -6,6 +6,7 @@ import Paper from "../Paper";
 import { useButton, useButtonInnerContent } from "../common/useButton";
 import { useInput } from "../common/useInput";
 import { useTextarea } from "../common/useTextarea";
+import Checkbox from "../../../ui/Checkbox/Checkbox";
 import Avatar from "../common/Avatar";
 const Component = styled.section`
   width: 710px;
@@ -114,10 +115,34 @@ const ReviewForm = styled.form`
   width: 670px;
 `;
 const InputWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
   flex: 1;
   margin: 0 10px;
 `;
+const InputOtherContent = styled.div`
+  width: 100%;
+  height: 20px;
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+`;
+const ShortcutReminder = styled.span`
+  color: #6f6f6f;
+  font-size: 13px;
+  line-height: 20px;
+  .icon {
+    margin-left: 4px;
+    margin-top: -12px;
+    color: rgb(221, 218, 217);
+  }
+`;
+const ShareOnTwitter = styled.div`
+  position: relative;
+  left: 70px;
+`;
 function WannaReview(props) {
+  const [shouldShowInputReminder, setShouldShowInputReminder] = React.useState(true);
   const [SendButton] = useButton({
     ...SendButtonProps,
   });
@@ -148,6 +173,13 @@ function WannaReview(props) {
   });
 
   const [ReviewInput] = useTextarea({});
+  const handleInputChangeInDiscussion = (e) => {
+    if (e.value !== "") {
+      console.log("handleChangeInDiscussion", e);
+      //todo prevent re-render caused by shouldShowInputReminder
+      // setShouldShowInputReminder(true);
+    }
+  };
   return (
     <WannaReviewComponent>
       <WannaReviewHeader>
@@ -174,7 +206,28 @@ function WannaReview(props) {
       <ReviewForm>
         <Avatar srcUrl={props.userAvatar} size={30}></Avatar>
         <InputWrapper>
-          <ReviewInput placeholder="What do you think of this product?"></ReviewInput>
+          <ReviewInput
+            placeholder="What do you think of this product?"
+            onChange={handleInputChangeInDiscussion}
+          ></ReviewInput>
+          {shouldShowInputReminder && (
+            <InputOtherContent>
+              <ShortcutReminder>
+                @user, !product, ?makers <Icon name="query" size={10}></Icon>
+              </ShortcutReminder>
+              <ShareOnTwitter>
+                <Checkbox
+                  label="Share on Twitter"
+                  size={18}
+                  iconSize={15}
+                  labelFontSize={13}
+                  iconColor="rgb(0,117,255)"
+                  rippleColor="rgba(0,0,0,0)"
+                  iconHoverColor="rgba(0,0,0,0)"
+                ></Checkbox>
+              </ShareOnTwitter>
+            </InputOtherContent>
+          )}
         </InputWrapper>
         <SendButton>
           <SendButtonContent>SEND</SendButtonContent>
