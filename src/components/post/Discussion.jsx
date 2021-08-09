@@ -5,6 +5,8 @@ import Icon from "../../../ui/Icon/Icon";
 import Paper from "../Paper";
 import { useButton, useButtonInnerContent } from "../common/useButton";
 import { useInput } from "../common/useInput";
+import { useTextarea } from "../common/useTextarea";
+import Avatar from "../common/Avatar";
 const Component = styled.section`
   width: 710px;
 `;
@@ -40,10 +42,11 @@ const WannaReviewComponent = styled.div`
   flex-direction: column;
   align-items: flex-start;
   width: 670px;
-  height: 100px;
+  min-height: 100px;
 `;
 const WannaReviewHeader = styled.div`
   width: 100%;
+  height: 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -105,15 +108,15 @@ const RatingButtonContentProps = {
   FW: 600,
   FS: 13,
 };
-const ReviewFormComponent = styled.form`
+const ReviewForm = styled.form`
   display: flex;
   margin-top: 20px;
   width: 670px;
-  height: 34px;
 `;
-function ReviewForm(props) {
-  return <ReviewFormComponent>{props.children}</ReviewFormComponent>;
-}
+const InputWrapper = styled.div`
+  flex: 1;
+  margin: 0 10px;
+`;
 function WannaReview(props) {
   const [SendButton] = useButton({
     ...SendButtonProps,
@@ -144,7 +147,7 @@ function WannaReview(props) {
     ...RatingButtonContentProps,
   });
 
-  const [ReviewInput] = useInput({});
+  const [ReviewInput] = useTextarea({});
   return (
     <WannaReviewComponent>
       <WannaReviewHeader>
@@ -169,7 +172,10 @@ function WannaReview(props) {
         </Stats>
       </WannaReviewHeader>
       <ReviewForm>
-        <ReviewInput></ReviewInput>
+        <Avatar srcUrl={props.userAvatar} size={30}></Avatar>
+        <InputWrapper>
+          <ReviewInput placeholder="What do you think of this product?"></ReviewInput>
+        </InputWrapper>
         <SendButton>
           <SendButtonContent>SEND</SendButtonContent>
         </SendButton>
@@ -180,6 +186,7 @@ function WannaReview(props) {
 WannaReview.propTypes = {
   reviews: PropTypes.number,
   ratings: PropTypes.number,
+  userAvatar: PropTypes.string,
 };
 
 export default function Discussion(props) {
@@ -193,7 +200,11 @@ export default function Discussion(props) {
       </Header>
       <Paper>
         <ContentContainer>
-          <WannaReview reviews={props.reviews} ratings={props.ratings}></WannaReview>
+          <WannaReview
+            reviews={props.reviews}
+            ratings={props.ratings}
+            userAvatar={props.userAvatar}
+          ></WannaReview>
         </ContentContainer>
       </Paper>
     </Component>
@@ -202,4 +213,5 @@ export default function Discussion(props) {
 Discussion.propTypes = {
   reviews: PropTypes.number,
   ratings: PropTypes.number,
+  userAvatar: PropTypes.string,
 };
