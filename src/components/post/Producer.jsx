@@ -1,8 +1,7 @@
 import * as React from "react";
 import styled from "@emotion/styled";
 import PropTypes from "prop-types";
-import Button from "../../../ui/Button/Button";
-import Icon from "../../../ui/Icon/Icon";
+import Avatar from "../common/Avatar";
 import Paper from "../Paper";
 const Component = styled.section`
   width: 330px;
@@ -96,11 +95,6 @@ const UserItemComponent = styled.div`
   display: flex;
   height: 40px;
 `;
-const Avatar = styled.img`
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-`;
 const NoWrapText = styled.p`
   margin: 0;
   overflow: hidden;
@@ -126,7 +120,7 @@ const UserIntroduction = styled(NoWrapText)`
 function UserItem(props) {
   return (
     <UserItemComponent className="user-item">
-      <Avatar src={props.avatarUrl}></Avatar>
+      <Avatar srcUrl={props.avatarUrl} size={30}></Avatar>
       <UserContent>
         <UserName>{props.name}</UserName>
         <UserIntroduction>{props.introduction}</UserIntroduction>
