@@ -18,7 +18,7 @@ const DefaultTheme = {
   fontWeight: 400,
   fontSize: "13px",
 };
-//todo ::placeholder its weird to require font-family 
+//todo ::placeholder its weird to require font-family
 const TextareaComponent = styled.textarea`
   padding: 0;
   width: ${(props) => getValueTolerantly(props, "width", DefaultTheme)};
@@ -44,7 +44,7 @@ const TextareaComponent = styled.textarea`
     font-size: 13px;
     line-height: 20px;
     color: #6f6f6f;
-    font-family: 'Roboto';
+    font-family: "Roboto";
   }
 `;
 const parseNumberWithPx = (v) => `${v}px`;
@@ -57,6 +57,7 @@ todo the ways to autosize the textarea
 2.to use absolute textarea and render content to a div -> not tried
 3.to monitor and calc rows of the content, short comming -> requiring an auto-wrap algorithm
 */
+
 function BasicTextarea(props) {
   const ref = React.useRef(null);
   const [idealHeight, setIdealHeight] = React.useState(32);
@@ -70,7 +71,6 @@ function BasicTextarea(props) {
     props.onChange?.({ value: inputValue });
   }, [inputValue]);
   const handleChange = (e) => {
-    // console.log("handleChange", e.target.value.split("\n"));
     setInputValue(e.target.value);
   };
   const computedHeight = React.useMemo(() => {
@@ -123,26 +123,23 @@ const useTextarea = ({
   fontWeight,
   fontSize,
 }) => {
+  const [inputValue, setInputValue] = React.useState("");
+  const [autoHeight, setAutoHeight] = React.useState(32);
+  React.useEffect(() => {
+    let numRowsOfContent = inputValue.split("\n").length;
+    setAutoHeight((numRowsOfContent > 10 ? 10 : numRowsOfContent) * 20 + 12);
+  }, [inputValue]);
+  const RenderTextarea = TextareaComponent;
+  /*   //this doesn't work
   const RenderTextarea = (props) => {
     return (
-      <BasicTextarea
-        width={width}
-        height={height}
-        border={border}
-        hoverBorderColor={hoverBorderColor}
-        focusBorderColor={focusBorderColor}
-        borderColor={borderColor}
-        borderRadius={borderRadius}
-        lineHeight={lineHeight}
-        fontWeight={fontWeight}
-        fontSize={fontSize}
-        placeholder={props.placeholder}
+      <TextareaComponent
+        height={props.height}
         onChange={props.onChange}
-      >
-        {props.children}
-      </BasicTextarea>
+        border={parseColorWithBorder(borderColor)}
+      />
     );
-  };
-  return [RenderTextarea];
+  }; */
+  return [setInputValue, autoHeight, RenderTextarea];
 };
-export { useTextarea, BasicTextarea };
+export { useTextarea, TextareaComponent };
