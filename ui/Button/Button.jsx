@@ -68,13 +68,7 @@ LoadingEffect.propTypes = {
 export default function Button(props) {
   const [isHovering, setIsHovering] = React.useState(false);
   const computedClasses = React.useMemo(
-    () =>
-      clsx(
-        "btn",
-        props.disabled && "disabled",
-        props.loading && "loading",
-        props.variant
-      ),
+    () => clsx("btn", props.disabled && "disabled", props.loading && "loading", props.variant),
     [props.variant, props.loading, props.disabled]
   );
   const computedBoxShadow = React.useMemo(() => {
@@ -92,16 +86,14 @@ export default function Button(props) {
   const computedBorder = React.useMemo(() => {
     //only for outlined
     if (props.variant === "outlined")
-      if (props.disabled)
-        return `1px solid ${getColor("disabled", props.variant, "border")}`;
+      if (props.disabled) return `1px solid ${getColor("disabled", props.variant, "border")}`;
       else
         return `1px solid ${
           isHovering
             ? props.hoverBorderColor ||
               props.borderColor ||
               getColor(props.color, props.variant, "borderFocused")
-            : props.borderColor ||
-              getColor(props.color, props.variant, "border")
+            : props.borderColor || getColor(props.color, props.variant, "border")
         }`;
     else return null;
   }, [
@@ -115,9 +107,7 @@ export default function Button(props) {
   const computedBorderRadius = React.useMemo(() => {
     if (props.tile) return null;
     else if (props.rounded)
-      return props.height
-        ? `${props.height / 2}px`
-        : getSize(props.size)["height"];
+      return props.height ? `${props.height / 2}px` : getSize(props.size)["height"];
     else return `${props.borderRadius || 4}px`;
   }, [props.tile, props.rounded, props.height, props.size]);
   const computedBackgroundColor = React.useMemo(() => {
@@ -129,10 +119,7 @@ export default function Button(props) {
         props.backgroundColor ||
         getColor(props.color, props.variant, "focus")
       );
-    else
-      return (
-        props.backgroundColor || getColor(props.color, props.variant, "main")
-      );
+    else return props.backgroundColor || getColor(props.color, props.variant, "main");
   }, [
     props.disabled,
     props.variant,
@@ -149,8 +136,7 @@ export default function Button(props) {
         props.contentColor ||
         getColor(props.color, props.variant, "text")
       );
-    else
-      return props.contentColor || getColor(props.color, props.variant, "text");
+    else return props.contentColor || getColor(props.color, props.variant, "text");
   }, [
     isHovering,
     props.disabled,
@@ -193,9 +179,7 @@ export default function Button(props) {
       onMouseEnter={handleHoverEnter}
       onMouseLeave={handleHoverLeave}
     >
-      <Content style={{ opacity: computedContentOpacity }}>
-        {props.children}
-      </Content>
+      <Content style={{ opacity: computedContentOpacity }}>{props.children}</Content>
       {props.loading && <LoadingEffect size={20}></LoadingEffect>}
     </ButtonComponent>
   );

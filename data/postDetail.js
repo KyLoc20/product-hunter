@@ -62,7 +62,35 @@ const PostDetailData = [{
         karmas: 140,
         upvotes: 24,
         date: "9d ago",
-        commentItems: [],
+        commentItems: [{
+                name: "Chris Barcus",
+                introduction: "Co-founder @ Tactic",
+                avatar: "/examples/postDetail/avatar1.jpg",
+                href: "/@chris_barcus",
+                titleItems: ["Maker"],
+                contentItems: [
+                    "Thank you +1"
+                ],
+                karmas: 140,
+                upvotes: 3,
+                date: "8d ago",
+                commentItems: []
+            },
+            {
+                name: "Chris Barcus",
+                introduction: "Co-founder @ Tactic",
+                avatar: "/examples/postDetail/avatar1.jpg",
+                href: "/@chris_barcus",
+                titleItems: ["Maker"],
+                contentItems: [
+                    "Thank you +2"
+                ],
+                karmas: 140,
+                upvotes: 3,
+                date: "7d ago",
+                commentItems: []
+            },
+        ],
 
     }]
 }, ]

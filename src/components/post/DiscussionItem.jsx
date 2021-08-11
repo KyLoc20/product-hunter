@@ -2,6 +2,7 @@ import * as React from "react";
 import styled from "@emotion/styled";
 import PropTypes from "prop-types";
 import Avatar from "../common/Avatar";
+import Icon from "../../../ui/Icon/Icon";
 import { useButton, useButtonInnerContent } from "../common/useButton";
 const Component = styled.section`
   display: flex;
@@ -19,8 +20,6 @@ const CommentItemsContainer = styled.div`
   display: flex;
   width: 100%;
   flex-direction: column;
-  height: 200px;
-  background: rgba(0, 255, 255, 0.05);
 `;
 const Author = styled.div`
   display: flex;
@@ -70,10 +69,68 @@ const ContentText = styled.p`
 const ActionWrapper = styled.div`
   display: flex;
   height: 24px;
+  margin-bottom: 8px;
+  button {
+    margin-right: 20px;
+    .icon {
+      margin-top: -2px;
+    }
+  }
 `;
+const DateLabel = styled.span`
+  display: flex;
+  align-items: center;
+  padding: 2px 5px;
+  height: 20px;
+  cursor: pointer;
+  margin-right: 5px;
+  font-weight: 300;
+  font-size: 11px;
+`;
+const BasicButtonProps = {
+  height: 24,
+  padding: "2px 5px",
+  backgroundColor: "#fff",
+  hoverBackgroundColor: "#f3f3f3",
+  contentColor: "#6f6f6f",
+  borderRadius: 3,
+};
+const BasicButtonContentProps = {
+  FW: 600,
+  FS: 11,
+  LH: 16,
+};
+
 export default function Item(props) {
+  const [UpvoteButton] = useButton({
+    ...BasicButtonProps,
+  });
+  const [UpvoteButtonContent] = useButtonInnerContent({
+    ...BasicButtonContentProps,
+  });
+  const [ReplyButton] = useButton({
+    ...BasicButtonProps,
+  });
+  const [ReplyButtonContent] = useButtonInnerContent({
+    ...BasicButtonContentProps,
+  });
+  const [ShareButton] = useButton({
+    ...BasicButtonProps,
+  });
+  const [ShareButtonContent] = useButtonInnerContent({
+    ...BasicButtonContentProps,
+  });
+  const [MoreButton] = useButton({
+    ...BasicButtonProps,
+    padding: "0 5px",
+    hoverBackgroundColor: "#fff",
+    rippleDisabled: true,
+  });
+  const [MoreButtonContent] = useButtonInnerContent({
+    ...BasicButtonContentProps,
+  });
   return (
-    <Component>
+    <Component style={{ marginBottom: props.layer === 1 ? "20px" : null }}>
       <Avatar srcUrl={props.avatar} size={30}></Avatar>
       <ContentContainer>
         <Author>
@@ -91,8 +148,44 @@ export default function Item(props) {
             <ContentText key={index}>{sParagraph}</ContentText>
           ))}
         </WordsWrapper>
-        <ActionWrapper></ActionWrapper>
-        <CommentItemsContainer></CommentItemsContainer>
+        <ActionWrapper>
+          <UpvoteButton>
+            <UpvoteButtonContent>
+              <Icon name="upTriangle" size={18}></Icon>Upvote ({props.upvotes})
+            </UpvoteButtonContent>
+          </UpvoteButton>
+          <ReplyButton>
+            <ReplyButtonContent>Reply</ReplyButtonContent>
+          </ReplyButton>
+          <ShareButton>
+            <ShareButtonContent>Share</ShareButtonContent>
+          </ShareButton>
+          <DateLabel>{props.date}</DateLabel>
+          <MoreButton>
+            <MoreButtonContent>
+              <Icon name="more" size={15} viewBox="0 -2 24 24" />
+            </MoreButtonContent>
+          </MoreButton>
+        </ActionWrapper>
+        <CommentItemsContainer>
+          {props.commentItems.map((oComment, index) => (
+            <Item
+              key={index}
+              name={oComment.name}
+              introduction={oComment.introduction}
+              avatar={oComment.avatar}
+              href={oComment.href}
+              karmas={oComment.karmas}
+              titleItems={oComment.titleItems}
+              contentItems={oComment.contentItems}
+              upvotes={oComment.upvotes}
+              date={oComment.date}
+              commentItems={oComment.commentItems}
+              layer={props.layer + 1}
+              maxLayer={2}
+            ></Item>
+          ))}
+        </CommentItemsContainer>
       </ContentContainer>
     </Component>
   );

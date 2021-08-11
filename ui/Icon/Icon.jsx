@@ -25,8 +25,8 @@ function Icon(props) {
     [props.name]
   );
   const computedViewBox = React.useMemo(
-    () => iconMap[props.name]?.viewBox,
-    [props.name]
+    () => props.viewBox||iconMap[props.name]?.viewBox,
+    [props.name,props.viewBox]
   );
   const computedSize = React.useMemo(() => {
     if (typeof props.size === "number") return `${props.size}px`;
@@ -70,6 +70,7 @@ function validateFailing(propName, componentName) {
 Icon.propTypes = {
   name: PropTypes.oneOf(iconList),
   color: PropTypes.string,
+  viewBox: PropTypes.string,
   size: function (props, propName, componentName) {
     let value = props[propName];
     if (typeof value === "string") {
