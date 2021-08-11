@@ -111,6 +111,7 @@ export default function ModalContainer(props) {
               reviews={postDetailData.reviews}
               ratings={postDetailData.ratings}
               userAvatar={postDetailData.userAvatar}
+              discussionItems={postDetailData.discussionItems}
             ></Discussion>
           </LeftContainer>
           <RightContainer>

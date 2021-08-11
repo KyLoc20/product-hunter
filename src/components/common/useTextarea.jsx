@@ -129,6 +129,7 @@ const useTextarea = ({
     let numRowsOfContent = inputValue.split("\n").length;
     setAutoHeight((numRowsOfContent > 10 ? 10 : numRowsOfContent) * 20 + 12);
   }, [inputValue]);
+  //todo figure out how to bind props to TextareaComponent
   const RenderTextarea = TextareaComponent;
   /*   //this doesn't work
   const RenderTextarea = (props) => {

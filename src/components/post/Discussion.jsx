@@ -6,7 +6,8 @@ import Checkbox from "../../../ui/Checkbox/Checkbox";
 import { useButton, useButtonInnerContent } from "../common/useButton";
 import ReviewForm from "./ReviewForm";
 import Paper from "../Paper";
-import Avatar from "../common/Avatar";
+import Item from "./DiscussionItem";
+import uuid from "react-uuid";
 const Component = styled.section`
   width: 710px;
 `;
@@ -37,7 +38,13 @@ const Header = styled.div`
     }
   }
 `;
-
+const DiscussionContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  width: 670px;
+  min-height: 100px;
+`;
 export default function Discussion(props) {
   return (
     <Component>
@@ -54,6 +61,25 @@ export default function Discussion(props) {
             ratings={props.ratings}
             userAvatar={props.userAvatar}
           ></WannaReview>
+          <DiscussionContent>
+            {props.discussionItems.map((oDiscussion) => (
+              <Item
+                key={uuid()}
+                name={oDiscussion.name}
+                introduction={oDiscussion.introduction}
+                avatar={oDiscussion.avatar}
+                href={oDiscussion.href}
+                karmas={oDiscussion.karmas}
+                titleItems={oDiscussion.titleItems}
+                contentItems={oDiscussion.contentItems}
+                upvotes={oDiscussion.upvotes}
+                date={oDiscussion.date}
+                commentItems={oDiscussion.commentItems}
+                layer={1}
+                maxLayer={2}
+              ></Item>
+            ))}
+          </DiscussionContent>
         </ContentContainer>
       </Paper>
     </Component>
@@ -63,6 +89,10 @@ Discussion.propTypes = {
   reviews: PropTypes.number,
   ratings: PropTypes.number,
   userAvatar: PropTypes.string,
+  discussionItems: PropTypes.array,
+};
+Discussion.defaultProps = {
+  discussionItems: [],
 };
 const WannaReviewComponent = styled.div`
   display: flex;
@@ -70,6 +100,8 @@ const WannaReviewComponent = styled.div`
   align-items: flex-start;
   width: 670px;
   min-height: 100px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e8e8e8;
 `;
 const WannaReviewHeader = styled.div`
   width: 100%;
