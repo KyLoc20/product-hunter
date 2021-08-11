@@ -2,6 +2,7 @@ import * as React from "react";
 import styled from "@emotion/styled";
 import PropTypes from "prop-types";
 import { getValueTolerantly, getValueStrictly, getParsedValueStrictly } from "./utils";
+import { css } from "@emotion/react";
 /* 
 todo height&line-height
 if height set, line-height doesnt work unless it is larger than height
@@ -130,7 +131,13 @@ const useTextarea = ({
     setAutoHeight((numRowsOfContent > 10 ? 10 : numRowsOfContent) * 20 + 12);
   }, [inputValue]);
   //todo figure out how to bind props to TextareaComponent
-  const RenderTextarea = TextareaComponent;
+  const dynamicStyle = css`
+    border-color: ${borderColor};
+  `;
+  const RenderTextarea = styled(TextareaComponent)`
+    ${dynamicStyle};
+  `;
+  // const RenderTextarea = TextareaComponent;
   /*   //this doesn't work
   const RenderTextarea = (props) => {
     return (
