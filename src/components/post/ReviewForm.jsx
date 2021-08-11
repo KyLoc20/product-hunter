@@ -5,7 +5,7 @@ import Icon from "../../../ui/Icon/Icon";
 import Checkbox from "../../../ui/Checkbox/Checkbox";
 import { useButton, useButtonInnerContent } from "../common/useButton";
 // import { useTextarea } from "../common/useTextarea";
-import { TextareaComponent as Textarea ,useTextarea} from "../common/useTextarea";
+import { TextareaComponent as Textarea, useTextarea } from "../common/useTextarea";
 import Avatar from "../common/Avatar";
 
 const Component = styled.form`
@@ -25,6 +25,7 @@ const SendButtonContentProps = {
   FS: 11,
   LH: 16,
 };
+
 export default function ReviewForm(props) {
   console.log("render -> ReviewForm");
   const [SendButton] = useButton({
@@ -34,7 +35,11 @@ export default function ReviewForm(props) {
     ...SendButtonContentProps,
   });
   return (
-    <Component>
+    <Component
+      onSubmit={(e) => {
+        e.preventDefault();
+      }}
+    >
       <Avatar srcUrl={props.userAvatar} size={30}></Avatar>
       <ReviewInputContainer></ReviewInputContainer>
       <SendButton>
@@ -82,25 +87,28 @@ const InputContainer = styled.div`
 //   );
 // }
 function ReviewInputContainer(props) {
-
   const [showOtherContent, hideOtherContent, GhostInputOtherContent] = useGhost(
     InputOtherContent,
     false
   );
   //with the hook useTextarea
-  const [setInputValue, inputHeight, Textarea]=useTextarea({})
+  const [setInputValue, inputHeight, Textarea] = useTextarea({});
   const handleInputChange = (e) => {
     // console.log("-> handleChange in ReviewInputContainer", e.target.value);
     if (e.target.value !== "") showOtherContent();
     else hideOtherContent();
-    setInputValue(e.target.value)
+    setInputValue(e.target.value);
   };
   const computedHeight = React.useMemo(() => {
     return `${inputHeight}px`;
   }, [inputHeight]);
   return (
     <InputContainer>
-      <Textarea height={computedHeight} onChange={handleInputChange} placeholder="What do you think of this product?" />
+      <Textarea
+        height={computedHeight}
+        onChange={handleInputChange}
+        placeholder="What do you think of this product?"
+      />
       <GhostInputOtherContent></GhostInputOtherContent>
     </InputContainer>
   );
