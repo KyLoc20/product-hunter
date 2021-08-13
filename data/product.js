@@ -1,4 +1,4 @@
-const PostDetailData = [{
+const ProductData = [{
     name: "Tactic",
     description: "Where office and remote work meet",
     cover: "/examples/postDetail/cover1.jpg",
@@ -95,9 +95,9 @@ const PostDetailData = [{
     }]
 }, ]
 
-function getPostDetailData() {
-    return PostDetailData
+function getProductData() {
+    return ProductData
 }
 export {
-    getPostDetailData
+    getProductData
 }

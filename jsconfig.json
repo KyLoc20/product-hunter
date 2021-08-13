@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/components/*": ["components/*"],
+      "@/ui/*": ["ui/*"],
+      "@/api/*": ["api/*"],
+    },
+    "jsx": "preserve",
+  }
+}

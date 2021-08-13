@@ -2,7 +2,7 @@ import * as React from "react";
 import styled from "@emotion/styled";
 import PropTypes from "prop-types";
 import RankBanner from "./RankBanner";
-import Button from "../../../ui/Button/Button";
+import Button from "@/ui/Button/Button";
 const Component = styled.section`
   display: flex;
   align-items: center;

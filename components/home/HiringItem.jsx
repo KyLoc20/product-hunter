@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import PropTypes from "prop-types";
 import * as React from "react";
-import Icon from "../../../ui/Icon/Icon";
+import Icon from "@/ui/Icon/Icon";
 import clsx from "clsx";
 const Component = styled.div`
   display: flex;

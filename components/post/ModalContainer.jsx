@@ -1,8 +1,8 @@
 import * as React from "react";
 import styled from "@emotion/styled";
 import PropTypes from "prop-types";
-import { getPostDetailData } from "../../../data/postDetail";
-import Icon from "../../../ui/Icon/Icon";
+import { getData } from "api/base";
+import Icon from "@/ui/Icon/Icon";
 import Header from "./Header";
 import ProductContent from "./ProductContent";
 import VoteContent from "./VoteContent";
@@ -73,7 +73,7 @@ export default function ModalContainer(props) {
   const [postDetailData, setPostDetailData] = React.useState({});
   const [isLoading, setIsLoading] = React.useState(false);
   React.useEffect(() => {
-    const data = getPostDetailData()[0];
+    const data = getData("product")[0];
     console.log("load data for modal", data);
     setPostDetailData(data);
     setIsLoading(true);

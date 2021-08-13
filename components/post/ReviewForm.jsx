@@ -1,12 +1,12 @@
 import * as React from "react";
 import styled from "@emotion/styled";
 import PropTypes from "prop-types";
-import Icon from "../../../ui/Icon/Icon";
-import Checkbox from "../../../ui/Checkbox/Checkbox";
-import { useButton, useButtonInnerContent } from "../common/useButton";
+import Icon from "@/ui/Icon/Icon";
+import Checkbox from "@/ui/Checkbox/Checkbox";
+import { useButton, useButtonInnerContent } from "../generic/useButton";
 // import { useTextarea } from "../common/useTextarea";
-import { TextareaComponent as Textarea, useTextarea } from "../common/useTextarea";
-import Avatar from "../common/Avatar";
+import { TextareaComponent as Textarea, useTextarea } from "../generic/useTextarea";
+import Avatar from "../generic/Avatar";
 
 const Component = styled.form`
   display: flex;

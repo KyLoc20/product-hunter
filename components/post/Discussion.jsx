@@ -1,11 +1,11 @@
 import * as React from "react";
 import styled from "@emotion/styled";
 import PropTypes from "prop-types";
-import Icon from "../../../ui/Icon/Icon";
-import Checkbox from "../../../ui/Checkbox/Checkbox";
-import { useButton, useButtonInnerContent } from "../common/useButton";
+import Icon from "@/ui/Icon/Icon";
+import Checkbox from "@/ui/Checkbox/Checkbox";
+import { useButton, useButtonInnerContent } from "../generic/useButton";
 import ReviewForm from "./ReviewForm";
-import Paper from "../Paper";
+import Paper from "../generic/Paper";
 import Item from "./DiscussionItem";
 import uuid from "react-uuid";
 const Component = styled.section`

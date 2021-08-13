@@ -2,10 +2,10 @@ import styled from "@emotion/styled";
 import PropTypes from "prop-types";
 import * as React from "react";
 import uuid from "react-uuid";
-import Paper from "../Paper";
-import Divider from "../Divider";
+import Paper from "../generic/Paper";
+import Divider from "../generic/Divider";
 import Item from "./PostItem";
-import Icon from "../../../ui/Icon/Icon";
+import Icon from "@/ui/Icon/Icon";
 const Component = styled.section`
   display: flex;
   flex-direction: column;

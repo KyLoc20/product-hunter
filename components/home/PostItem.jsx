@@ -1,10 +1,10 @@
 import styled from "@emotion/styled";
 import PropTypes from "prop-types";
 import * as React from "react";
-import Button from "../../../ui/Button/Button";
-import Icon from "../../../ui/Icon/Icon";
-import Divider from "../Divider";
-import { useModal } from "../common/modal";
+import Button from "@/ui/Button/Button";
+import Icon from "@/ui/Icon/Icon";
+import Divider from "../generic/Divider";
+import { useModal } from "../../hooks/modal";
 import ModalContainer from "../post/ModalContainer";
 const Component = styled.div`
   display: flex;

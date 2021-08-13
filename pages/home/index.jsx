@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import PropTypes from "prop-types";
 import * as React from "react";
 import { getData } from "../../api/base";
-import AppBar from "../../components/AppBar";
+import AppBar from "../../components/generic/AppBar";
 import Recommend from "../../components/home/Recommend";
 import PostList from "../../components/home/PostList";
 import LatestStory from "../../components/home/LatestStory";

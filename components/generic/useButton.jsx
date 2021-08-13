@@ -1,7 +1,7 @@
 import * as React from "react";
 import styled from "@emotion/styled";
 import PropTypes from "prop-types";
-import Button from "../../../ui/Button/Button";
+import Button from "@/ui/Button/Button";
 const useButton = ({
   variant,
   width,

@@ -1,9 +1,9 @@
 import * as React from "react";
 import styled from "@emotion/styled";
 import PropTypes from "prop-types";
-import Avatar from "../common/Avatar";
-import Icon from "../../../ui/Icon/Icon";
-import { useButton, useButtonInnerContent } from "../common/useButton";
+import Avatar from "../generic/Avatar";
+import Icon from "@/ui/Icon/Icon";
+import { useButton, useButtonInnerContent } from "../generic/useButton";
 const Component = styled.section`
   display: flex;
   width: 100%;

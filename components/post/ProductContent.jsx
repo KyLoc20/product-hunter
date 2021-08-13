@@ -1,9 +1,9 @@
 import * as React from "react";
 import styled from "@emotion/styled";
 import PropTypes from "prop-types";
-import Paper from "../Paper";
-import Button from "../../../ui/Button/Button";
-import Icon from "../../../ui/Icon/Icon";
+import Paper from "../generic/Paper";
+import Button from "@/ui/Button/Button";
+import Icon from "@/ui/Icon/Icon";
 const Component = styled.section`
   width: 710px;
   margin-bottom: 30px;

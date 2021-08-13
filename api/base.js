@@ -1,12 +1,14 @@
-import { getRecommendData } from "../data/recommend.js";
-import { getPostData } from "../data/post.js";
-import { getStoryData } from "../data/story.js";
+import { getRecommendData } from "../data/recommend";
+import { getPostData } from "../data/post";
+import { getStoryData } from "../data/story";
 import { getUpcomingData } from "../data/upcoming";
 import { getHiringData } from "../data/hiring";
 import { getDiscussionData } from "../data/discussion";
+import { getProductData } from "data/product";
 const SourceMap = {
     "recommend": getRecommendData,
     "post": getPostData,
+    "product": getProductData,
     "story": getStoryData,
     "upcoming": getUpcomingData,
     "hiring": getHiringData,

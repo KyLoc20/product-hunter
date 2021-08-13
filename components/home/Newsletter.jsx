@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
 import PropTypes from "prop-types";
 import * as React from "react";
-import Paper from "../Paper";
-import Button from "../../../ui/Button/Button";
+import Paper from "../generic/Paper";
+import Button from "@/ui/Button/Button";
 const Component = styled.section`
   display: flex;
   flex-direction: column;

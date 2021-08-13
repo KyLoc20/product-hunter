@@ -1,8 +1,8 @@
 import * as React from "react";
 import styled from "@emotion/styled";
 import PropTypes from "prop-types";
-import Avatar from "../common/Avatar";
-import Paper from "../Paper";
+import Avatar from "../generic/Avatar";
+import Paper from "../generic/Paper";
 const Component = styled.section`
   width: 330px;
 `;
