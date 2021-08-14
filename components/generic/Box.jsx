@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-
+import { css } from "@emotion/react";
 const BoxComponent = styled.div`
   display: flex;
   flex-direction: ${(props) => props.direction};
@@ -8,8 +8,8 @@ const BoxComponent = styled.div`
 /* 
 to provide a way of binding some forward props to styled
 */
-const withBox = ({ column } = {}) => {
-  return styled.div`
+const withBoxCSS = ({ column } = {}) => {
+  return css`
     display: flex;
     flex-direction: ${column && "column"};
     position: relative;
@@ -18,4 +18,4 @@ const withBox = ({ column } = {}) => {
 export default function Box(props) {
   return <BoxComponent>{props.children}</BoxComponent>;
 }
-export { Box, withBox };
+export { Box, withBoxCSS };

@@ -4,13 +4,14 @@ import * as React from "react";
 import Paper from "../generic/Paper";
 import Item from "./HiringItem";
 import Button from "@/ui/Button/Button";
+import { withBoxCSS } from "../generic/Box";
+import { composeCSS } from "utilities/style";
 const Component = styled.section`
-  display: flex;
-  flex-direction: column;
-  position: relative;
+  ${[withBoxCSS({ column: true })]};
   width: 330px;
   margin-bottom: 20px;
 `;
+
 const Header = styled.div`
   display: flex;
   position: relative;
@@ -46,6 +47,7 @@ const ButtonContent = styled.span`
   font-weight: 600;
   letter-spacing: normal;
 `;
+
 const PostJob = styled.div`
   display: flex;
   margin-top: 20px;
@@ -63,6 +65,8 @@ const PostJob = styled.div`
   }
 `;
 export default function Hiring(props) {
+  console.log("Hiring PostJob", PostJob);
+  console.log("Hiring Component", Component);
   return (
     <Component>
       <Header>Hiring now</Header>
