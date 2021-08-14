@@ -5,6 +5,7 @@
       "@/components/*": ["components/*"],
       "@/ui/*": ["ui/*"],
       "@/api/*": ["api/*"],
+      "@/utilities/*": ["utilities/*"],
     },
     "jsx": "preserve",
   }

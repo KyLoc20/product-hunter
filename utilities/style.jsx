@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
-
+const parseNumberWithPx = (v) => v!==undefined?`${v}px`:undefined;
 const composeCSS = (tag, ...cssStyles) => {
   return styled(tag)`
     ${cssStyles.map((style) => style)};
@@ -25,4 +25,4 @@ const FontCSS = css`
 `;
 const Header = composeCSS("div", BaseCSS, colorCSS, FontCSS); */
 
-export { composeCSS };
+export { composeCSS,parseNumberWithPx };

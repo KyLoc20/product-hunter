@@ -5,7 +5,8 @@ import Paper from "../generic/Paper";
 import Item from "./HiringItem";
 import Button from "@/ui/Button/Button";
 import { withBoxCSS } from "../generic/Box";
-import { composeCSS } from "utilities/style";
+import { composeCSS } from "@/utilities/style";
+import { withTextCSS } from "../generic/Text";
 const Component = styled.section`
   ${[withBoxCSS({ column: true })]};
   width: 330px;
@@ -22,6 +23,7 @@ const Header = styled.div`
   font-size: 16px;
   font-weight: 500;
 `;
+
 const ContentContainer = styled.div`
   display: flex;
   flex-direction: column;
