@@ -18,14 +18,18 @@ const Wrapper = styled.div`
     margin-right: 4px;
   }
 `;
-export default function ViewAllButton(props) {
+export default function ShowMoreButton(props) {
+  const handleClick = (e) => {
+    props.onClick?.(e);
+  };
   return (
-    <Wrapper>
+    <Wrapper onClick={handleClick}>
       <Icon name="down2" size={12} color="rgb(204, 200, 199)"></Icon>
       {`SHOW ${props.moreNum} MORE`}
     </Wrapper>
   );
 }
-ViewAllButton.propTypes = {
+ShowMoreButton.propTypes = {
   moreNum: PropTypes.number,
+  onClick: PropTypes.func,
 };

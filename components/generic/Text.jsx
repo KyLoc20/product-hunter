@@ -41,9 +41,12 @@ const CustomTextFactory = {
   headerTitle20: { fontSize: 20, lineHeight: 32, fontWeight: 500 },
   button: { fontSize: 11, lineHeight: 16, fontWeight: 600, letterSpacing: "normal" },
   buttonLite: { fontSize: 11, lineHeight: 16, letterSpacing: "normal" },
+  button13: { fontSize: 13, lineHeight: 20, fontWeight: 600, letterSpacing: "normal" },
   reminder: { fontSize: 13, lineHeight: 17, fontWeight: 600 },
-  title: { fontSize: 13, lineHeight: 20, fontWeight: 600 },
-  description:{ fontSize: 13, lineHeight: 20, color:"rgb(111, 111, 111)" },
+  title13: { fontSize: 13, lineHeight: 20, fontWeight: 600 },
+  title16: { fontSize: 16, lineHeight: 24, fontWeight: 600 },
+  description13: { fontSize: 13, lineHeight: 20, color: "rgb(111, 111, 111)" },
+  description11: { fontSize: 11, lineHeight: 16, color: "rgb(111, 111, 111)" },
 };
 function customTextCSS(which) {
   return withTextCSS(CustomTextFactory[which] || {});

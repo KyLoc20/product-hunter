@@ -4,8 +4,14 @@ import * as React from "react";
 import Button from "@/ui/Button/Button";
 import Icon from "@/ui/Icon/Icon";
 import Divider from "@/components/generic/Divider";
+import CommentButton from "./CommentButton";
+import UpvoteButton from "./UpvoteButton";
 import { useModal } from "@/hooks/modal";
-import ModalContainer from "@/components/post/ModalContainer";
+import ProductModal from "@/components/post/ModalContainer";
+
+import { withBoxCSS } from "@/components/generic/Box";
+import { withNoWrapText, customTextCSS } from "@/components/generic/Text";
+
 const Component = styled.div`
   display: flex;
   padding: 20px;
@@ -21,138 +27,45 @@ const Image = styled.img`
   margin-top: 5px;
   margin-right: 10px;
 `;
-const BasicText = styled.p`
-  margin: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-`;
-const ItemContent = styled.div`
+const Content = styled.div`
   width: 506px;
   height: 85px;
-`;
-const ItemName = styled(BasicText)`
-  font-weight: 600;
-  line-height: 24px;
-`;
-const ItemDescription = styled(BasicText)`
-  font-size: 13px;
-  color: rgb(111, 111, 111);
-  line-height: 20px;
-  margin-bottom: 12px;
-  text-transform: full-width;
-`;
-const Meta = styled.div`
-  display: flex;
-  width: 100%;
-  height: 24px;
-  align-items: center;
-  button {
-    margin-right: 10px;
-  }
-`;
-const CommentButtonInnerContent = styled.span`
-  display: flex;
-  align-items: center;
-  height: 16px;
-  .text {
-    font-size: 11px;
-    color: rgb(111, 111, 111);
-    letter-spacing: 0.035em;
-    padding-left: 2px;
-  }
-`;
-const VoteButtonWrapper = styled.div`
-  margin-left: 20px;
-  height: 74px;
-`;
-const VoteButtonInnerContent = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 46px;
-  .text {
-    margin-top: -8px;
-    font-size: 13px;
-    font-weight: 600;
-    line-height: 20px;
-  }
-`;
-const MetaContentWrapper = styled.span`
-  height: 16px;
-  line-height: 16px;
-  font-size: 11px;
-  color: rgb(111, 111, 111);
-  cursor: pointer;
-`;
-const PromotedTag = styled.span`
-  display: flex;
-  align-items: center;
-  height: 24px;
-  font-size: 11px;
-  color: #006bff;
-  .icon {
-    margin-left: 4px;
-  }
 `;
 export default function Item(props) {
   const { show, hide, RenderModal } = useModal("modal-container");
 
   const handleOpenPostDetail = (e) => {
-    console.log("handleOpenPostDetail", e.target);
     show();
   };
   const handleClosePostDetail = (e) => {
     hide();
   };
+  const RenderPriceType = <InfoContent>{props.pricingType}</InfoContent>;
+  const RenderDivider = props.pricingType && <Divider></Divider>;
+  const RenderTopic = <InfoContent underline>{props.topic}</InfoContent>;
+  const RenderPromoted = props.promoted && (
+    <PromotedTag>
+      Promoted
+      <Icon name="query" size={10}></Icon>
+    </PromotedTag>
+  );
   return (
     <Component onClick={handleOpenPostDetail}>
       <Image src={props.coverUrl} alt={props.name} />
-      <ItemContent>
-        <ItemName>{props.name}</ItemName>
-        <ItemDescription>{props.description}</ItemDescription>
-        <Meta>
-          <Button
-            height={24}
-            padding={"0 8px"}
-            variant="outlined"
-            backgroundColor="#fff"
-            hoverBackgroundColor="#e8e8e8"
-            borderColor="#e8e8e8"
-          >
-            <CommentButtonInnerContent>
-              <Icon name="message1" color="rgb(111, 111, 111)" size={12}></Icon>
-              <span className="text">{props.comments}</span>
-            </CommentButtonInnerContent>
-          </Button>
-          <MetaContentWrapper>{props.pricingType}</MetaContentWrapper>
-          {props.pricingType && <Divider></Divider>}
-          <MetaContentWrapper>{props.topic}</MetaContentWrapper>
-          {props.promoted && (
-            <PromotedTag>
-              Promoted
-              <Icon name="query" size={10}></Icon>
-            </PromotedTag>
-          )}
-        </Meta>
-      </ItemContent>
-      <VoteButtonWrapper>
-        <Button
-          height={74}
-          padding={"0 8px"}
-          variant="outlined"
-          backgroundColor="#fff"
-          hoverBackgroundColor="#f9f9f9"
-          borderColor="#e8e8e8"
-        >
-          <VoteButtonInnerContent>
-            <Icon name="upTriangle" size={25}></Icon>
-            <span className="text">{props.comments}</span>
-          </VoteButtonInnerContent>
-        </Button>
-      </VoteButtonWrapper>
+      <Content>
+        <ProductName>{props.name}</ProductName>
+        <ProductDescription>{props.description}</ProductDescription>
+        <OtherInfo>
+          <CommentButton comments={props.comments}></CommentButton>
+          {RenderPriceType}
+          {RenderDivider}
+          {RenderTopic}
+          {RenderPromoted}
+        </OtherInfo>
+      </Content>
+      <UpvoteButton upvotes={props.votes}></UpvoteButton>
       <RenderModal>
-        <ModalContainer onClose={handleClosePostDetail}></ModalContainer>
+        <ProductModal onClose={handleClosePostDetail}></ProductModal>
       </RenderModal>
     </Component>
   );
@@ -170,3 +83,34 @@ Item.propTypes = {
 Item.defaultProps = {
   promoted: false,
 };
+
+const ProductName = styled.div`
+  ${[withNoWrapText(), customTextCSS("title16")]};
+`;
+const ProductDescription = styled.div`
+  ${[withNoWrapText(), customTextCSS("description13")]};
+  margin-bottom: 12px;
+`;
+const OtherInfo = styled.div`
+  ${[withBoxCSS({ AI: "center" })]};
+  height: 24px;
+  button {
+    margin-right: 10px;
+  }
+`;
+const InfoContent = styled.span`
+  ${[customTextCSS("description11")]};
+  cursor: pointer;
+  &:hover {
+    text-decoration: ${(props) => props.underline && "underline"};
+  }
+`;
+const PromotedTag = styled.span`
+  ${[withBoxCSS({ AI: "center" })]};
+  height: 24px;
+  font-size: 11px;
+  color: #006bff;
+  .icon {
+    margin-left: 4px;
+  }
+`;

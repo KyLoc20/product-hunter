@@ -26,18 +26,19 @@ export default function PostList(props) {
     if (isAllDisplayed) return allItems;
     else return allItems.slice(0, props.firstDisplayNum);
   }, [props.items, isAllDisplayed, props.firstDisplayNum]);
-  const handleShowMore = () => {
+  const handleShowMore = (e) => {
     setIsAllDisplayed(true);
   };
+  const RenderShowMoreButton = !isAllDisplayed && (
+    <ShowMoreButton
+      onClick={handleShowMore}
+      moreNum={props.items.length - props.firstDisplayNum}
+    ></ShowMoreButton>
+  );
   return (
     <MainCard>
       {computedDisplayedItems}
-      {!isAllDisplayed && (
-        <ShowMoreButton
-          onClick={handleShowMore}
-          moreNum={props.items.length - props.firstDisplayNum}
-        ></ShowMoreButton>
-      )}
+      {RenderShowMoreButton}
     </MainCard>
   );
 }

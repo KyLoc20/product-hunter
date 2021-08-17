@@ -9,7 +9,7 @@ const Component = styled.div`
   margin-bottom: 20px;
 `;
 const CompanyName = styled.div`
-  ${[withAutoWrapText(), customTextCSS("title")]};
+  ${[withAutoWrapText(), customTextCSS("title13")]};
   cursor: pointer;
   .arrow {
     visibility: hidden;
@@ -19,7 +19,7 @@ const CompanyName = styled.div`
   }
 `;
 const BasicDescription = styled.div`
-  ${[withAutoWrapText(), customTextCSS("description")]};
+  ${[withAutoWrapText(), customTextCSS("description13")]};
   margin-top: 5px;
   text-transform: full-width;
 `;

@@ -1,11 +1,11 @@
 import styled from "@emotion/styled";
 import PropTypes from "prop-types";
 import * as React from "react";
-import Item from "./Item";
 import { withBoxCSS } from "@/components/generic/Box";
 import { withTextCSS, customTextCSS } from "@/components/generic/Text";
 import { withPaperCSS } from "@/components/generic/Paper";
-import { ViewAllButton } from "./ViewAllButton";
+import Item from "./Item";
+import ViewAllButton from "./ViewAllButton";
 const Component = styled.section`
   ${[withBoxCSS({ column: true })]};
   width: 330px;
