@@ -45,12 +45,12 @@ Hiring.defaultProps = {
   items: [],
 };
 const Header = styled.div`
-  ${[withBoxCSS({ AI: "center" }), customTextCSS("headerTitle")]};
+  ${[withBoxCSS({ AI: "center" }), customTextCSS("headerTitle16")]};
   margin-bottom: 10px;
 `;
 const PaperContainer = styled.div`
   ${[withBoxCSS({ column: true }), withPaperCSS()]};
-  width: 330px;
+  width: 100%;
   margin-bottom: 20px;
   padding: 20px;
 `;
