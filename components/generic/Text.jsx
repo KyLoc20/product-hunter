@@ -26,10 +26,24 @@ const withTextCSS = ({
     }
   `;
 };
+const withAutoWrapText = () => css`
+  word-wrap: break-word;
+`;
+const withNoWrapText = () => css`
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+`;
+
+//custom for PH
 const CustomTextFactory = {
-  title: { fontSize: 16, lineHeight: 21, fontWeight: 500 },
+  headerTitle: { fontSize: 16, lineHeight: 21, fontWeight: 500 },
+  button: { fontSize: 11, lineHeight: 16, fontWeight: 600, letterSpacing: "normal" },
+  reminder: { fontSize: 13, lineHeight: 17, fontWeight: 600 },
+  title: { fontSize: 13, lineHeight: 20, fontWeight: 600 },
+  description:{ fontSize: 13, lineHeight: 20, color:"rgb(111, 111, 111)" },
 };
 function customTextCSS(which) {
   return withTextCSS(CustomTextFactory[which] || {});
 }
-export { withTextCSS, customTextCSS };
+export { withTextCSS, customTextCSS, withAutoWrapText, withNoWrapText };

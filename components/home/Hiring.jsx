@@ -67,8 +67,6 @@ const PostJob = styled.div`
   }
 `;
 export default function Hiring(props) {
-  console.log("Hiring PostJob", PostJob);
-  console.log("Hiring Component", Component);
   return (
     <Component>
       <Header>Hiring now</Header>

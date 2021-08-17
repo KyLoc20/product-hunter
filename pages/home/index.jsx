@@ -8,7 +8,6 @@ import Recommend from "../../components/home/Recommend";
 import PostList from "../../components/home/PostList";
 import LatestStory from "../../components/home/LatestStory";
 import Upcoming from "../../components/home/Upcoming";
-// import Hiring from "../../components/home/Hiring";
 import Hiring from "@/components/home/Hiring/Component";
 import Newsletter from "../../components/home/Newsletter";
 import TopDiscussion from "../../components/home/TopDiscussion";
@@ -39,7 +38,7 @@ const RightContainer = styled("aside")`
   margin-top: 12px;
   margin-left: 20px;
 `;
-const Modal=styled.div``
+const Modal = styled.div``;
 function HomePage(props) {
   const {
     version,

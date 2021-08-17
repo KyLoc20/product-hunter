@@ -13,10 +13,12 @@ const BoxComponent = styled.div`
 /* 
 to provide a way of binding some forward props to styled
 */
-const withBoxCSS = ({ column } = {}) => {
+const withBoxCSS = ({ column, JC, AI } = {}) => {
   return css`
     display: flex;
     flex-direction: ${column && "column"};
+    justify-content: ${JC};
+    align-items: ${AI};
     position: relative;
     box-sizing: border-box;
   `;

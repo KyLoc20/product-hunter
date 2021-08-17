@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import PropTypes from "prop-types";
 import Icon from "@/ui/Icon/Icon";
 import Checkbox from "@/ui/Checkbox/Checkbox";
-import { useButton, useButtonInnerContent } from "../generic/useButton";
+import { useButton, useButtonInnerContent } from "../generic/Button";
 // import { useTextarea } from "../common/useTextarea";
 import { TextareaComponent as Textarea, useTextarea } from "../generic/useTextarea";
 import Avatar from "../generic/Avatar";
