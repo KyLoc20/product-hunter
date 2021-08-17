@@ -17,7 +17,7 @@ const Container = styled("section")`
   flex-direction: column;
   align-items: center;
   position: relative;
-  background: rgb(243, 243, 243);
+  background: #fafbff;
   min-height: 100vh;
 `;
 const ContentContainer = styled("section")`

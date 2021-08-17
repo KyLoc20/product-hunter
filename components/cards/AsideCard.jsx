@@ -6,12 +6,12 @@ import { withTextCSS, customTextCSS } from "@/components/generic/Text";
 import { withPaperCSS } from "@/components/generic/Paper";
 const Component = styled.section`
   ${[withBoxCSS({ column: true })]};
-  width: 720px;
-  margin-bottom: 30px;
+  width: 330px;
+  margin-bottom: 20px;
 `;
 const Header = styled.div`
-  ${[withBoxCSS({ JC: "space-between", AI: "center" }), customTextCSS("headerTitle20")]};
-  height: 32px;
+  ${[withBoxCSS({ JC: "space-between", AI: "center" }), customTextCSS("headerTitle16")]};
+  height: 21px;
   margin-bottom: 10px;
 `;
 const PaperContainer = styled.div`
@@ -20,9 +20,10 @@ const PaperContainer = styled.div`
     withPaperCSS({ radius: 5, border: "1px solid #d9e1ec", shadow: "none" }),
   ]};
   width: 100%;
+  padding: 20px;
   margin-bottom: 20px;
 `;
-export default function MainCard(props) {
+export default function AsideCard(props) {
   const RenderHeader = props.renderHeader || (() => <span>{props.header}</span>);
   return (
     <Component>
@@ -33,10 +34,10 @@ export default function MainCard(props) {
     </Component>
   );
 }
-MainCard.propTypes = {
+AsideCard.propTypes = {
   header: PropTypes.string,
   renderHeader: PropTypes.func,
 };
-MainCard.defaultProps = {
+AsideCard.defaultProps = {
   header: "Header",
 };

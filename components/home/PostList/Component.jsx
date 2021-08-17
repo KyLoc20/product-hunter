@@ -5,6 +5,7 @@ import uuid from "react-uuid";
 import Item from "./Item";
 import MainCard from "@/components/cards/MainCard";
 import ShowMoreButton from "./ShowMoreButton";
+import Divider from "@/components/generic/Divider";
 export default function PostList(props) {
   const [isAllDisplayed, setIsAllDisplayed] = React.useState(
     props.firstDisplayNum - props.items.length >= 0
@@ -36,7 +37,7 @@ export default function PostList(props) {
     ></ShowMoreButton>
   );
   return (
-    <MainCard>
+    <MainCard renderHeader={HeaderContent}>
       {computedDisplayedItems}
       {RenderShowMoreButton}
     </MainCard>
@@ -62,3 +63,25 @@ PostList.defaultProps = {
   items: [],
   firstDisplayNum: 15,
 };
+const FilterWrapper = styled.span`
+  display: flex;
+  align-items: center;
+  .filter {
+    cursor: pointer;
+    line-height: 15px;
+    font-size: 11px;
+    font-weight: 400;
+    &.selected {
+      font-weight: 600;
+    }
+  }
+`;
+const HeaderContent = () => (
+  <React.Fragment>
+    <span>Today</span>
+    <FilterWrapper>
+      <span className="filter selected">POPULAR</span> <Divider height={15} spacing={5}></Divider>
+      <span className="filter">NEWEST</span>
+    </FilterWrapper>
+  </React.Fragment>
+);

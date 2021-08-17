@@ -10,11 +10,12 @@ const Container = styled.div((props) => ({
   boxShadow: "0 1px 2px 0 rgba(0, 0, 0, 0.1)",
   borderRadius: `${props.borderRadius}px` || "5px",
 }));
-const withPaperCSS = ({ color, shadow, radius } = {}) => {
+const withPaperCSS = ({ color, shadow, radius, border } = {}) => {
   return css`
-  background: ${color || "#fff"};
-  box-shadow: ${shadow || "0 1px 2px 0 rgba(0, 0, 0, 0.1)"};
-  border-radius: ${parseNumberWithPx(radius) || "5px"};
+    background: ${color || "#fff"};
+    box-shadow: ${shadow || "0 1px 2px 0 rgba(0, 0, 0, 0.1)"};
+    border: ${border};
+    border-radius: ${parseNumberWithPx(radius) || "5px"};
   `;
 };
 export default function Paper(props) {

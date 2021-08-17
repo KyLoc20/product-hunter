@@ -16,7 +16,7 @@ const Component = styled.div`
   display: flex;
   padding: 20px;
   cursor: pointer;
-  border-bottom: 1px solid #e8e8e8;
+  border-bottom: 1px solid #d9e1ec;
   &:hover {
     background: #f9f9f9;
   }
