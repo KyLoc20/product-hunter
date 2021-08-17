@@ -6,7 +6,7 @@ import Item from "./HiringItem";
 import Button from "@/ui/Button/Button";
 import { withBoxCSS } from "../generic/Box";
 import { composeCSS } from "@/utilities/style";
-import { withTextCSS } from "../generic/Text";
+import { withTextCSS,customTextCSS } from "../generic/Text";
 const Component = styled.section`
   ${[withBoxCSS({ column: true })]};
   width: 330px;

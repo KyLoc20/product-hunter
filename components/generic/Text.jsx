@@ -26,4 +26,10 @@ const withTextCSS = ({
     }
   `;
 };
-export { withTextCSS };
+const CustomTextFactory = {
+  title: { fontSize: 16, lineHeight: 21, fontWeight: 500 },
+};
+function customTextCSS(which) {
+  return withTextCSS(CustomTextFactory[which] || {});
+}
+export { withTextCSS, customTextCSS };
