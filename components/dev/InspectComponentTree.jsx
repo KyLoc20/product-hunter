@@ -2,15 +2,15 @@ import styled from "@emotion/styled";
 import PropTypes from "prop-types";
 import * as React from "react";
 import Paper from "@/components/generic/Paper";
-import { withBoxCSS } from "../generic/Box";
+import { withBoxCSS } from "@/components/generic/Box"
 import { composeCSS } from "@/utilities/style";
-import { withTextCSS } from "../generic/Text";
+import { withTextCSS } from "@/components/generic/Text";
 import Inspector from "../helper/Inspector";
 const Component = styled("section")`
   ${[withBoxCSS({ column: true })]};
   width: 720px;
 `;
-const ContentContainer = styled("section")`
+const ContentContainer = styled("div")`
   ${[withBoxCSS({ column: true })]};
   width: 100%;
   padding: 20px;
