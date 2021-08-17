@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import PropTypes from "prop-types";
 import { useButton } from "@/components/generic/Button";
 import { withBoxCSS } from "@/components/generic/Box";
 import { withTextCSS, customTextCSS } from "@/components/generic/Text";
@@ -22,7 +23,7 @@ const Content = styled.span`
   ${[withBoxCSS({ JC: "center" }), customTextCSS("button")]};
   width: 262px;
 `;
-function ViewAllButton(props) {
+export default function ViewAllButton(props) {
   const [Button] = useButton({
     ...Setting,
   });
@@ -34,4 +35,4 @@ function ViewAllButton(props) {
     </Wrapper>
   );
 }
-export { ViewAllButton };
+ViewAllButton.propTypes = {};
