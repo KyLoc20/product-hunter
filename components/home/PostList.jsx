@@ -81,7 +81,6 @@ export default function PostList(props) {
         promoted={value.promoted}
       ></Item>
     ));
-    console.log("computedDisplayedItems", allItems);
     if (isAllDisplayed) return allItems;
     else return allItems.slice(0, props.firstDisplayNum);
   }, [props.items, isAllDisplayed, props.firstDisplayNum]);

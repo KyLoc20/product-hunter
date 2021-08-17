@@ -16,13 +16,13 @@ const withTextCSS = ({
   HC,
 } = {}) => {
   return css`
-    font-size: ${parseNumberWithPx(fontSize || FS)};
-    font-weight: ${fontWeight || FW};
-    line-height: ${parseNumberWithPx(lineHeight || LH)};
-    letter-spacing: ${letterSpacing || LS};
-    color: ${color || C};
+    font-size: ${parseNumberWithPx(FS || fontSize)};
+    font-weight: ${FW || fontWeight};
+    line-height: ${parseNumberWithPx(LH || lineHeight)};
+    letter-spacing: ${LS || letterSpacing};
+    color: ${C || color};
     &:hover {
-      color: ${hoverColor || HC};
+      color: ${HC || hoverColor};
     }
   `;
 };
