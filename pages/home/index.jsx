@@ -5,11 +5,10 @@ import * as React from "react";
 import { getData } from "../../api/base";
 import AppBar from "../../components/generic/AppBar";
 import Recommend from "../../components/home/Recommend";
-import PostList2 from "../../components/home/PostList";
 import PostList from "@/components/home/PostList/Component";
-import LatestStory from "../../components/home/LatestStory";
 import Upcoming from "../../components/home/Upcoming";
 import Hiring from "@/components/home/Hiring/Component";
+import LatestStory from "@/components/home/LatestStory/Component";
 import Newsletter from "../../components/home/Newsletter";
 import TopDiscussion from "../../components/home/TopDiscussion";
 const Container = styled("section")`
@@ -63,7 +62,6 @@ function HomePage(props) {
         <LeftContainer>
           <Recommend items={recommendItems}></Recommend>
           <PostList title={"Today"} items={todayPostItems}></PostList>
-          <PostList2 title={"Today"} items={todayPostItems}></PostList2>
         </LeftContainer>
         <RightContainer>
           <LatestStory items={latestStoryItems}></LatestStory>

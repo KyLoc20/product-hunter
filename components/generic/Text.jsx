@@ -43,8 +43,8 @@ const CustomTextFactory = {
   buttonLite: { fontSize: 11, lineHeight: 16, letterSpacing: "normal" },
   button13: { fontSize: 13, lineHeight: 20, fontWeight: 600, letterSpacing: "normal" },
   reminder: { fontSize: 13, lineHeight: 17, fontWeight: 600 },
-  title13: { fontSize: 13, lineHeight: 20, fontWeight: 600 },
-  title16: { fontSize: 16, lineHeight: 24, fontWeight: 600 },
+  title13: { fontSize: 13, lineHeight: 20, fontWeight: 600, color: "#21293c" },
+  title16: { fontSize: 16, lineHeight: 24, fontWeight: 600, color: "#21293c" },
   description13: { fontSize: 13, lineHeight: 20, color: "rgb(111, 111, 111)" },
   description11: { fontSize: 11, lineHeight: 16, color: "rgb(111, 111, 111)" },
 };

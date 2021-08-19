@@ -8,16 +8,17 @@ import Item from "./Item";
 import AsideCard from "@/components/cards/AsideCard";
 import ViewAllButton from "./ViewAllButton";
 export default function Hiring(props) {
+  const RenderItems = props.items.map((value, index) => (
+    <Item
+      key={index}
+      name={value.name}
+      description={value.description}
+      location={value.location}
+    ></Item>
+  ));
   return (
-    <AsideCard header="Hiring now">
-      {props.items.map((value, index) => (
-        <Item
-          key={index}
-          name={value.name}
-          description={value.description}
-          location={value.location}
-        ></Item>
-      ))}
+    <AsideCard header="Hiring now" padding="20px">
+      {RenderItems}
       <ViewAllButton></ViewAllButton>
       <PostJob>
         Hiring?<span className="post-text">Post a job</span>

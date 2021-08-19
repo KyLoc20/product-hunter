@@ -20,7 +20,7 @@ const PaperContainer = styled.div`
     withPaperCSS({ radius: 5, border: "1px solid #d9e1ec", shadow: "none" }),
   ]};
   width: 100%;
-  padding: 20px;
+  padding: ${(props) => props.padding};
   margin-bottom: 20px;
 `;
 export default function AsideCard(props) {
@@ -30,13 +30,14 @@ export default function AsideCard(props) {
       <Header>
         <RenderHeader></RenderHeader>
       </Header>
-      <PaperContainer>{props.children}</PaperContainer>
+      <PaperContainer padding={props.padding}>{props.children}</PaperContainer>
     </Component>
   );
 }
 AsideCard.propTypes = {
   header: PropTypes.string,
   renderHeader: PropTypes.func,
+  padding: PropTypes.string,
 };
 AsideCard.defaultProps = {
   header: "Header",
