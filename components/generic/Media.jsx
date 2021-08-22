@@ -22,14 +22,12 @@ function Gif(props) {
       ref={videoRef}
       width={props.width}
       height={props.height}
-      loop={props.loop}
-      autoPlay={props.autoPlay}
+      loop
+      autoPlay
       disableremoteplayback
       disablepictureinpicture
-      playsinline
+      poster={props.url}
     >
-      <source src={props.url} type="video/webm" />
-      <source src={props.url} type="video/mp4" />
     </GifComponent>
   );
 }
@@ -37,56 +35,50 @@ Gif.propTypes = {
   width: PropTypes.number.isRequired,
   height: PropTypes.number.isRequired,
   url: PropTypes.string.isRequired,
-  autoPlay: PropTypes.bool,
-  loop: PropTypes.bool,
-};
-Gif.defaultProps = {
-  autoPlay: true,
-  loop: true,
-  disableRemotePlayback: true,
-  disablePictureInPicture: true,
 };
 Media.Gif = Gif;
-const useGif = (width, height, url, active) => {
-  const [isActive, setIsActive] = React.useState(active);
+function ControlledGif({ width, height, url }) {
+  const [isActive, setIsActive] = React.useState(false);
   const videoRef = React.useRef();
   React.useEffect(() => {
     if (videoRef.current) {
+      const video = videoRef.current;
       if (isActive) {
-        const video = videoRef.current;
-        const promise = video.play();
-
-        if (promise !== undefined) {
-          promise
-            .then(() => {
-              // Autoplay started
-            })
-            .catch((error) => {
-              // Autoplay was prevented.
-              video.muted = true;
-              video.play();
-            });
-        }
+        video.play();
       } else {
-        videoRef.current.currentTime = 0;
-        videoRef.current.pause();
+        video.currentTime = 0;
+        video.pause();
       }
     }
   }, [isActive]);
-  const RenderGif = (
+  const handleMouseEnter = () => {
+    setIsActive(true);
+  };
+  const handleMouseLeave = () => {
+    setIsActive(false);
+  };
+  return (
     <GifComponent
       ref={videoRef}
       width={width}
       height={height}
+      autoPlay={false}
       loop
       disableremoteplayback
       disablepictureinpicture
       playsinline
+      muted
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
       <source src={url} type="video/webm" />
       <source src={url} type="video/mp4" />
     </GifComponent>
   );
-  return [setIsActive, RenderGif];
+}
+ControlledGif.propTypes = {
+  width: PropTypes.number.isRequired,
+  height: PropTypes.number.isRequired,
+  url: PropTypes.string.isRequired,
 };
-export { useGif, Media };
+export { Media, ControlledGif };
