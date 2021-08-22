@@ -50,8 +50,9 @@ function Node({ name, type, generic, children, layer }) {
     <Box column>
       {tagLeft}
       <NodeChildren>
-        {children.map((node) => (
+        {children.map((node,index) => (
           <Node
+            key={index}
             name={node.name}
             type={node.type}
             generic={node.generic}
@@ -66,7 +67,7 @@ function Node({ name, type, generic, children, layer }) {
 }
 Node.propTypes = {
   name: PropTypes.string,
-  type: PropTypes.arrayOf(["Worker", "House"]),
+  type: PropTypes.oneOf(["Worker", "House"]),
   generic: PropTypes.bool,
   children: PropTypes.arrayOf(PropTypes.object),
   layer: PropTypes.number,

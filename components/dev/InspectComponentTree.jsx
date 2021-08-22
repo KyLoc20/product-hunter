@@ -1,20 +1,13 @@
 import styled from "@emotion/styled";
 import PropTypes from "prop-types";
 import * as React from "react";
-import Paper from "@/components/generic/Paper";
-import { withBoxCSS } from "@/components/generic/Box"
+import { withBoxCSS } from "@/components/generic/Box";
 import { composeCSS } from "@/utilities/style";
 import { withTextCSS } from "@/components/generic/Text";
 import Inspector from "../helper/Inspector";
-const Component = styled("section")`
-  ${[withBoxCSS({ column: true })]};
-  width: 720px;
-`;
-const ContentContainer = styled("div")`
-  ${[withBoxCSS({ column: true })]};
-  width: 100%;
-  padding: 20px;
-`;
+import MainCard from "../cards/MainCard";
+import Media from "../generic/Media";
+import { useGif } from "../generic/Media";
 export default function InspectComponentTree() {
   //e.g. AnswerCard
   const [tree, setTree] = React.useState({
@@ -55,14 +48,35 @@ export default function InspectComponentTree() {
       },
     ],
   });
+  // const [setPlayGif, RenderGif] = useGif(
+  //   80,
+  //   80,
+  //   "https://ph-files.imgix.net/9c6e6723-9956-4a04-93fa-f0bd891ee2ae.gif?fm=webm&amp;w=80&amp;h=80&amp;crop=max&amp;dpr=2#t=0.001",
+  //   false
+  // );
   return (
-    <Component>
-      <Paper>
-        <ContentContainer>
-          <Inspector tree={tree}></Inspector>
-        </ContentContainer>
-      </Paper>
-    </Component>
+    <MainCard>
+      <Inspector tree={tree}></Inspector>
+      <Media></Media>
+      <Media.Image></Media.Image>
+      <Media.Video></Media.Video>
+      {/* <img src="https://ph-files.imgix.net/78e0caaa-173a-46e0-94f4-0926f3d934d7.gif?auto=compress&fm=webp&codec=mozjpeg&cs=strip&w=330&h=110" /> */}
+      <Media.Gif
+        width={80}
+        height={80}
+        url="https://ph-files.imgix.net/9c6e6723-9956-4a04-93fa-f0bd891ee2ae.gif?fm=webm&amp;w=80&amp;h=80&amp;crop=max&amp;dpr=2#t=0.001"
+      ></Media.Gif>
+      {/* <div
+        onMouseEnter={() => {
+          setPlayGif(true);
+        }}
+        onMouseLeave={() => {
+          setPlayGif(false);
+        }}
+      >
+        {RenderGif}
+      </div> */}
+    </MainCard>
   );
 }
 InspectComponentTree.propTypes = {};
